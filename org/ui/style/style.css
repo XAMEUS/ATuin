@@ -1,0 +1,160 @@
+/* JavaFX CSS */
+
+.root {
+	-fx-border-insets: 15;
+	-fx-background-insets: 15;
+	-fx-background-color: transparent;
+	-fx-border-color: #262626;
+	-fx-border-width: 4;
+	-fx-border-radius: 3, 5;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 12, 0, 0, 0); 
+}
+
+.doc
+{
+	-fx-text-fill: red;
+  	-fx-border-color: #3c3c3c;
+	-fx-border-width: 2;
+	-fx-background-color: #282828;
+	-fx-border-radius: 0;
+  	-fx-background-radius: 0;
+}
+
+.console
+{
+	-fx-text-fill: #bcbcbc;
+  	-fx-border-color: #414646;
+	-fx-border-width: 2;
+	-fx-background-color: #2A2E2E;
+	-fx-border-radius: 0;
+  	-fx-background-radius: 0;
+}
+
+.console .content {
+	-fx-background-color: #282C2C;
+	-fx-border-radius: 0;
+  	-fx-background-radius: 0;
+	-fx-effect: innershadow( gaussian, rgba(0, 0, 0, 0.1 ), 8, 0, 0, 4 );
+}
+
+.menu-bar {
+	-fx-background-color: linear-gradient(to top, #262626, #2F2F2F);
+	/* -fx-effect: innershadow( gaussian, rgba(0, 0, 0, 0.2 ), 8, 0, 0, -4 );*/
+}
+
+.menu {
+    -fx-accent: #494E4E;
+    -fx-focus-color: #494E4E;
+}
+.menu .label {
+	-fx-text-fill: #bbb;
+	-fx-font-weight: bold;
+}
+.menu:showing {
+	-fx-background-color: linear-gradient(to top, #3B4141, #414747);
+}
+.menu:showing .label {
+	-fx-text-fill: #eee;
+}
+.menu:hover {
+	-fx-background-color: linear-gradient(to top, #3B4141, #414747);
+}
+.menu:hover .label {
+	-fx-text-fill: #eee;
+}
+
+.menu-item {
+	-fx-background-color: linear-gradient(to top, #262626, #2F2F2F);
+}
+.menu-item .label {
+	-fx-text-fill: #ccc;
+}
+.menu-item:hover {
+	-fx-background-color: #414646;
+}
+
+.menu-item:hover .label {
+	-fx-text-fill: #FF8700;
+}
+
+.context-menu {
+    -fx-background-color: linear-gradient(to top, #262626, #2F2F2F);
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 3 3 3, 0 9 9 9, 0 4 4 4;
+    -fx-padding: 0;
+}
+
+.separator *.line { 
+	-fx-border-style: solid;
+	-fx-border-width: 1px;
+	-fx-border-color: rgba(60, 60, 60, 1);
+}
+
+
+
+.scroll-bar {
+	-fx-background-color: #2A2E2E;
+	-fx-padding: 0;
+}
+
+.thumb {
+	-fx-background-color: #777;
+}
+
+.increment-button , .decrement-button {
+}
+
+
+.split-pane *.split-pane-divider {
+	-fx-background-color: #C66900;
+    -fx-padding: 0 2 0;
+}
+
+.split-pane {
+	-fx-background-color: #262626;
+}
+
+
+
+.tab-pan
+{
+    -fx-tab-min-width:90px;
+}
+
+.tab
+{
+    -fx-background-insets: 0 1 0 1, 0, 0;
+}
+.tab-pane .tab
+{
+    -fx-background-color: #343838;
+}
+.tab-pane .tab:selected
+{
+	-fx-background-color: #414646;
+    -fx-accent: transparent;
+    -fx-focus-color: transparent;
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #828282;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #FF8700;
+}
+
+/* */
+.tab-pane *.tab-header-background 
+{
+	-fx-background-color: #262626;
+	/* -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6), 1, 0.0 , 0 , -2); */
+	-fx-border-color: #282828;
+	-fx-border-color: linear-gradient(to top, rgba(0, 1, 2, 0.2), transparent);
+	-fx-border-style: solid;
+	-fx-border-width: 0 0 12px 0;
+}

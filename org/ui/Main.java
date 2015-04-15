@@ -1,0 +1,49 @@
+package org.ui;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+public class Main extends Application{
+	
+	private Stage primarySage;
+	private RootLayout rootLayout;
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+		this.primarySage = primaryStage;
+		this.primarySage.setTitle("TortueAj1n");
+		this.primarySage.setWidth(620);
+		this.primarySage.setHeight(600);
+		//this.primarySage.initStyle(StageStyle.TRANSPARENT);
+		
+		this.rootLayout = new RootLayout(this.primarySage);
+		
+		//this.rootLayout.getStylesheets().add(Main.class.getResource("/org/ui/style/style.css").toString());
+		this.rootLayout.getStyleClass().add("pane");
+		
+		Scene scene = new Scene(this.rootLayout);
+		scene.setFill(Color.TRANSPARENT);
+		
+		this.primarySage.setScene(scene);
+		this.primarySage.show();
+		
+		this.rootLayout.f();
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		Main.launch(args);
+        
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+        	public void run() {
+        		System.out.println("[QUIT]");
+        	}
+        }));
+	}
+	
+}
