@@ -1,5 +1,6 @@
 package org.ui;
 
+import org.ui.console.GConsoleFX;
 import org.ui.doc.GDocView;
 import org.ui.editor.GEditorFX;
 import org.ui.menu.GMenuFX;
@@ -66,7 +67,7 @@ public class RootLayout extends BorderPane {
 		
 	}
 	
-	public void f() {
+	public void drawInfos() {
 		editor.drawInfos();
 	}
 	

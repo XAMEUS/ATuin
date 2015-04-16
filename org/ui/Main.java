@@ -1,12 +1,14 @@
 package org.ui;
 
+import org.img.Img;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-public class Main extends Application{
+public class Main extends Application {
 	
 	private Stage primarySage;
 	private RootLayout rootLayout;
@@ -16,6 +18,7 @@ public class Main extends Application{
 		
 		this.primarySage = primaryStage;
 		this.primarySage.setTitle("TortueAj1n");
+		this.primarySage.getIcons().add(new Image(Img.class.getResource("logo4.png").toString()));
 		this.primarySage.setWidth(620);
 		this.primarySage.setHeight(600);
 		//this.primarySage.initStyle(StageStyle.TRANSPARENT);
@@ -31,7 +34,7 @@ public class Main extends Application{
 		this.primarySage.setScene(scene);
 		this.primarySage.show();
 		
-		this.rootLayout.f();
+		this.rootLayout.drawInfos();
 		
 	}
 	

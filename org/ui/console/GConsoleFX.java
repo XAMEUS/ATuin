@@ -1,4 +1,4 @@
-package org.ui;
+package org.ui.console;
 
 import org.fonts.Fonts;
 
@@ -22,6 +22,16 @@ public class GConsoleFX extends Tab {
 		bp.setCenter(this.textArea);
 		this.setContent(bp);
 		
+	}
+	
+	public void print(String s) {
+		this.textArea.setText(this.getText()+s);
+		this.textArea.setScrollTop(Double.MAX_VALUE);
+	}
+	
+	public void println(String s) {
+		this.textArea.setText(this.getText()+s+"\n");
+		this.textArea.setScrollTop(Double.MAX_VALUE);
 	}
 	
 }
