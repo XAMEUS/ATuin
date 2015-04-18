@@ -1,7 +1,7 @@
 package org.core.lexer;
 
-import org.core.Sym;
 import org.core.tokens.IntToken;
+import org.core.tokens.Sym;
 import org.core.tokens.Token;
 import org.core.tokens.VarToken;
 

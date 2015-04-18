@@ -1,5 +1,4 @@
-import org.core.parser.LookAhead1;
-
+package org.core.parser;
 
 public class Parser {
 	

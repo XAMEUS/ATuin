@@ -1,7 +1,5 @@
 package org.core.tokens;
 
-import org.core.Sym;
-
 public class Token {
 	
 	protected Sym symbol;

@@ -1,4 +1,4 @@
-package org.core;
+package org.core.tokens;
 
 public enum Sym {
 	

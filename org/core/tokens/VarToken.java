@@ -1,7 +1,5 @@
 package org.core.tokens;
 
-import org.core.Sym;
-
 public class VarToken extends Token {
 
 	private String value;
