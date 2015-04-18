@@ -1,9 +1,11 @@
-package org.core.syntax;
+package org.core.syntax.expressions;
+
+import org.core.syntax.Expression;
 
 public class Variable extends Expression {
 
 	@Override
-	int eval() {
+	public int eval() throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

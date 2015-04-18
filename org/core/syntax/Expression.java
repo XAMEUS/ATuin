@@ -1,5 +1,5 @@
 package org.core.syntax;
 
 public abstract class Expression {
-	abstract int eval();
+	public abstract int eval() throws Exception;
 }
