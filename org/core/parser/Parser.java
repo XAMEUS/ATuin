@@ -1,7 +1,16 @@
 package org.core.parser;
 
+import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
+import org.core.syntax.expressions.Difference;
+import org.core.syntax.expressions.Division;
+import org.core.syntax.expressions.Int;
+import org.core.syntax.expressions.Product;
+import org.core.syntax.expressions.Sum;
+import org.core.syntax.expressions.Variable;
+import org.core.syntax.instructions.Assign;
 import org.core.syntax.instructions.Decl;
+import org.core.syntax.instructions.LinkedInst;
 import org.core.syntax.instructions.Program;
 import org.core.tokens.Sym;
 
@@ -47,9 +56,85 @@ public class Parser {
 	}
 
 	private Instruction inst() throws Exception {
-		if (reader.check(Sym.EOF) || reader.check(Sym.RBRA))
-			return null;
+		if (reader.check(Sym.VARIABLE)) {
+			String s = reader.getStringValue();
+    		reader.eat(Sym.VARIABLE);
+    		reader.eat(Sym.EQ);
+    		Instruction instr = new Assign(s, expression());
+    		reader.eat(Sym.END);
+    		return instr;
+		}
+		if (reader.check(Sym.START)) {
+			reader.eat(Sym.START);
+			Instruction instr = procedure();
+			reader.eat(Sym.END);
+			return instr;
+		}
+		if (reader.check(Sym.FORWARD)) {
+			reader.eat(Sym.FORWARD);
+			Expression exp = expression();
+			//TODO create Forward Instruction
+			reader.eat(Sym.ENDL);
+		}
+		if (reader.check(Sym.TURN)) {
+			reader.eat(Sym.TURN);
+			Expression exp = expression();
+			//TODO create Turn Instruction
+			reader.eat(Sym.ENDL);
+		}
+		
 		return null;
+	}
+	
+	private LinkedInst procedure() throws Exception {
+		if (reader.check(Sym.EOF) || reader.check(Sym.RBRA))
+			return new LinkedInst(inst(), procedure());
+		return null;
+	}
+	
+	private Expression expression() throws Exception {
+		if (reader.check(Sym.INT)) {
+    		Expression exp = new Int(reader.getIntValue());
+    		reader.eat(Sym.INT);
+    		return exp;
+    	}
+    	else if (reader.check(Sym.VARIABLE)) {
+    		Expression exp = new Variable(reader.getStringValue());
+    		reader.eat(Sym.VARIABLE);
+    		return exp;
+    	}
+    	else {
+    		reader.eat(Sym.LPAR);
+    		Expression left = expression();
+    		Expression right = expFollow(left);
+    		reader.eat(Sym.RPAR);
+    		return right;
+    	}
+	}
+	
+	private Expression expFollow(Expression left) throws Exception {
+		if (reader.check(Sym.PLUS)) {
+			reader.eat(Sym.PLUS);
+			Expression right = expression();
+			return new Sum(left, right);
+		}
+		if (reader.check(Sym.MINUS)) {
+			reader.eat(Sym.MINUS);
+			Expression right = expression();
+			return new Difference(left, right);
+		}
+		if (reader.check(Sym.TIMES)) {
+			reader.eat(Sym.TIMES);
+			Expression right = expression();
+			return new Product(left, right);
+		}
+		if (reader.check(Sym.DIV)) {
+			reader.eat(Sym.DIV);
+			Expression right = expression();
+			return new Division(left, right);
+		}
+		throw new Exception("ParserException: error at position "
+				+ reader.getPosition() + "\nCannot reduce S!");
 	}
 	
 }
