@@ -1,13 +1,23 @@
 package org.core.syntax.instructions;
 
+import org.core.env.ValueEnvionment;
 import org.core.syntax.Instruction;
 
 public class Decl extends Instruction {
-
+	
+	private String name;
+	private Decl next;
+	
+	public Decl(String name, Decl next) {
+		this.name = name;
+		this.next = next;
+	}
+	
 	@Override
 	public void exec() throws Exception {
-		// TODO Auto-generated method stub
-
+		ValueEnvionment.setValue(this.name, 0);
+		if (this.next != null)
+			this.next.exec();
 	}
 
 }
