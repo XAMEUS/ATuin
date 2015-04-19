@@ -81,4 +81,8 @@ public class LookAhead1 {
 		return current.toString();
 	}
 
+	public String getPosition() {
+		return lexer.getPosition();
+	}
+
 }
