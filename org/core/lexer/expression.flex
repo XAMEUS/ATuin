@@ -45,11 +45,11 @@ variable = [a-z][a-zA-Z]*
 	"{" {return token(Sym.LBRA);}
 	"}" {return token(Sym.RBRA);}
 	
-	"VAR" {return token(Sym.VAR);}
+	"var" {return token(Sym.VAR);}
 	
 	";" {return token(Sym.END);}
 	
-	"PRINT" {return token(Sym.PRINT);}
+	"print" {return token(Sym.PRINT);}
 	
 	{variable} {return token(Sym.VARIABLE, yytext());}
 	{int}    {return token(Sym.INT, Integer.parseInt(yytext()));}
