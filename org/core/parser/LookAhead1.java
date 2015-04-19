@@ -73,7 +73,7 @@ public class LookAhead1 {
 			return t.getValue();
 		}
 		else {
-			throw new Exception("LookAhead error: get value from a non-valued token");
+			throw new Exception("LookAhead error: get value from a non-string token");
 		}
 	}
 
