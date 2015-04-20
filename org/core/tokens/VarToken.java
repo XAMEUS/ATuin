@@ -19,6 +19,6 @@ public class VarToken extends Token {
 	}
 
 	public String toString() {
-		return "Symbol : " + this.symbol + " | Value : " + this.getValue();
+		return "Symbol : " + this.symbol + " | Value : " + this.value;
 	}
 }
