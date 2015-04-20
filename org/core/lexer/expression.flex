@@ -49,6 +49,10 @@ variable = [a-z][a-zA-Z]*
 	"}" {return token(Sym.RBRA);}
 	
 	"var" {return token(Sym.VAR);}
+	"forward" {return token(Sym.FORWARD);}
+	"turn" {return token(Sym.TURN);}
+	"up" {return token(Sym.UP);}
+	"down" {return token(Sym.DOWN);}
 	
 	";" {return token(Sym.END);}
 	

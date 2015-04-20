@@ -27,6 +27,9 @@ public enum Sym {
     FORWARD,
     TURN,
     
+    UP,
+    DOWN,
+    
     EQ
     
     ;
