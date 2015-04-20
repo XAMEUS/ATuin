@@ -82,6 +82,16 @@ public class Parser {
 			//TODO create Turn Instruction
 			reader.eat(Sym.ENDL);
 		}
+		if (reader.check(Sym.UP)) {
+			reader.eat(Sym.UP);
+			//TODO create Up Instruction
+			reader.eat(Sym.ENDL);
+		}
+		if (reader.check(Sym.DOWN)) {
+			reader.eat(Sym.DOWN);
+			//TODO create Up Instruction
+			reader.eat(Sym.ENDL);
+		}
 		
 		return null;
 	}
