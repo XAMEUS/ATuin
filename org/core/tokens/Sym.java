@@ -30,7 +30,7 @@ public enum Sym {
     UP,
     DOWN,
     
-    EQ
+    EQ, REL
     
     ;
 	
