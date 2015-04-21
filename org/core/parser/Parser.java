@@ -97,7 +97,7 @@ public class Parser {
 	}
 	
 	private LinkedInst procedure() throws Exception {
-		if (reader.check(Sym.EOF) || reader.check(Sym.RBRA))
+		if (reader.check(Sym.EOF) || reader.check(Sym.RBRA) || reader.check(Sym.END))
 			return null;
 		return new LinkedInst(inst(), procedure());
 	}
