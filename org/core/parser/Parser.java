@@ -61,7 +61,7 @@ public class Parser {
     		reader.eat(Sym.VARIABLE);
     		reader.eat(Sym.EQ);
     		Instruction instr = new Assign(s, expression());
-    		reader.eat(Sym.END);
+    		reader.eat(Sym.ENDL);
     		return instr;
 		}
 		if (reader.check(Sym.START)) {
@@ -98,8 +98,8 @@ public class Parser {
 	
 	private LinkedInst procedure() throws Exception {
 		if (reader.check(Sym.EOF) || reader.check(Sym.RBRA))
-			return new LinkedInst(inst(), procedure());
-		return null;
+			return null;
+		return new LinkedInst(inst(), procedure());
 	}
 	
 	private Expression expression() throws Exception {
