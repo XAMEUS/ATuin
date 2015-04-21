@@ -1,0 +1,12 @@
+var a;
+var b;
+
+start
+	a = 2;
+	b = 3;
+	turn 4;
+	up;
+	forward b;
+	down;
+	forward b+7;
+end
