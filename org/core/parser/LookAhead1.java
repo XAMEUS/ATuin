@@ -76,6 +76,14 @@ public class LookAhead1 {
 			throw new Exception("LookAhead error: get value from a non-string token");
 		}
 	}
+	
+	/**
+	 * For debug
+	 * @return {@link Token}, the current token.
+	 */
+	public Token getCurrent() {
+		return current;
+	}
 
 	public String getString() {
 		return current.toString();
