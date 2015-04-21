@@ -104,22 +104,22 @@ public class Parser {
 	
 	private Expression expression() throws Exception {
 		if (reader.check(Sym.INT)) {
-    		Expression exp = new Int(reader.getIntValue());
-    		reader.eat(Sym.INT);
-    		return exp;
-    	}
-    	else if (reader.check(Sym.VARIABLE)) {
-    		Expression exp = new Variable(reader.getStringValue());
-    		reader.eat(Sym.VARIABLE);
-    		return exp;
-    	}
-    	else {
-    		reader.eat(Sym.LPAR);
-    		Expression left = expression();
-    		Expression right = expFollow(left);
-    		reader.eat(Sym.RPAR);
-    		return right;
-    	}
+			Expression exp = new Int(reader.getIntValue());
+			reader.eat(Sym.INT);
+			return expFollow(exp);
+		}
+		else if (reader.check(Sym.VARIABLE)) {
+			Expression exp = new Variable(reader.getStringValue());
+			reader.eat(Sym.VARIABLE);
+			return expFollow(exp);
+		}
+		else {
+			reader.eat(Sym.LPAR);
+			Expression exp = expression();
+			reader.eat(Sym.RPAR);
+			Expression right = expFollow(exp);
+			return right;
+		}
 	}
 	
 	private Expression expFollow(Expression left) throws Exception {
@@ -143,8 +143,7 @@ public class Parser {
 			Expression right = expression();
 			return new Division(left, right);
 		}
-		throw new Exception("ParserException: error at position "
-				+ reader.getPosition() + "\nCannot reduce S!");
+		return left;
 	}
 	
 }
