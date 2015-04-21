@@ -53,8 +53,10 @@ variable = [a-z][a-zA-Z]*
 	"turn" {return token(Sym.TURN);}
 	"up" {return token(Sym.UP);}
 	"down" {return token(Sym.DOWN);}
+	"start" {return token(Sym.START);}
+	"end" {return token(Sym.END);}
 	
-	";" {return token(Sym.END);}
+	";" {return token(Sym.ENDL);}
 	
 	"print" {return token(Sym.PRINT);}
 	
