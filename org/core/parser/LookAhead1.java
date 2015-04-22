@@ -38,7 +38,8 @@ public class LookAhead1 {
 	 */
 	public void eat(Sym s) throws Exception {
 		if (!check(s)) {
-			throw new Exception("\nCan't eat " + s + " current being " + current);
+			throw new Exception(this.getPosition() +
+					"\nCan't eat " + s + " current being " + current);
 		}
 		
 		// debug print
@@ -58,7 +59,8 @@ public class LookAhead1 {
 			return t.getValue();
 		}
 		else {
-			throw new Exception("LookAhead error: get value from a non-valued token");
+			throw new Exception(this.getPosition() +
+					"\nLookAhead error: get value from a non-valued token");
 		}
 	}
 
@@ -73,7 +75,8 @@ public class LookAhead1 {
 			return t.getValue();
 		}
 		else {
-			throw new Exception("LookAhead error: get value from a non-string token");
+			throw new Exception(this.getPosition() +
+					"\nLookAhead error: get value from a non-string token");
 		}
 	}
 	
@@ -90,7 +93,8 @@ public class LookAhead1 {
 	}
 
 	public String getPosition() {
-		return lexer.getPosition();
+		int[] pos = lexer.getPosition();
+		return "Reading at line " + pos[0] + ", column " + pos[1];
 	}
 
 }

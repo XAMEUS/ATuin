@@ -274,8 +274,8 @@ public class Lexer {
 	private VarToken token(Sym type, String name) {
 		return new VarToken(type, name);
 	}
-	public String getPosition() {
-		return "Reading at line "+yyline+", column "+yycolumn; 
+	public int[] getPosition() {
+		return new int[]{yyline, yycolumn}; 
 	}
 
 
