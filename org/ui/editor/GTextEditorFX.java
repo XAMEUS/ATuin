@@ -5,6 +5,10 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
@@ -14,6 +18,7 @@ import org.fonts.Fonts;
 public class GTextEditorFX extends TabPane {
 	
 	private GEditorFX gefx;
+	public final static String tabSpace = "   ";
 	
 	private class TextTab extends Tab {
 		
@@ -24,6 +29,22 @@ public class GTextEditorFX extends TabPane {
 			this.setText(text);
 			
 			this.textArea = new TextArea();
+			textArea.addEventFilter(
+				KeyEvent.KEY_PRESSED,
+				new EventHandler<KeyEvent>() {
+					final KeyCombination combo = new KeyCodeCombination(
+							KeyCode.TAB);
+
+					@Override
+					public void handle(KeyEvent event) {
+						if (combo.match(event)) {
+							textArea.insertText(
+									textArea.getCaretPosition(), tabSpace);
+							event.consume();
+						}
+					}
+				}
+			);
 			this.textArea.getStyleClass().add("console");
 			this.textArea.setFont(Font.loadFont(Fonts.class.getResource("LiberationMono-Regular.ttf").toString(), 12));
 			

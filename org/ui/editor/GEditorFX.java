@@ -14,13 +14,13 @@ public class GEditorFX extends BorderPane {
 		String t = "var a;"
 				+ "var b;"
 				+ "start\n"
-				+ "\ta = 2;"
-				+ "\tb = 3;"
-				+ "\tturn 4;"
-				+ "\tup;"
-				+ "\tforward b;"
-				+ "\tdown;"
-				+ "\tforward b+7;"
+				+ GTextEditorFX.tabSpace + "a = 2;"
+				+ GTextEditorFX.tabSpace + "b = 3;"
+				+ GTextEditorFX.tabSpace + "turn 4;"
+				+ GTextEditorFX.tabSpace + "up;"
+				+ GTextEditorFX.tabSpace + "forward b;"
+				+ GTextEditorFX.tabSpace + "down;"
+				+ GTextEditorFX.tabSpace + "forward b+7;"
 				+ "end";
 		t = t.replace(";", ";\n");
 		this.textEditor.getTextArea().setText(t);
