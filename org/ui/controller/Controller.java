@@ -1,9 +1,63 @@
 package org.ui.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+import org.core.lexer.Lexer;
+import org.core.parser.LookAhead1;
+import org.core.parser.Parser;
+import org.core.syntax.Instruction;
 import org.ui.console.GConsoleFX;
+import org.ui.editor.GEditorFX;
 
 public class Controller {
 	
 	public static GConsoleFX out;
+	
+	public static void run(GEditorFX gefx) {
+		
+		try {
+			PrintWriter writer = new PrintWriter("src.txt", "UTF-8");
+			writer.print(gefx.getText());
+			writer.close();
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		File input = new File("src.txt");
+		FileReader reader = null;
+		try {
+			reader = new FileReader(input);
+		} catch (FileNotFoundException e) {
+			out.println("404: File not found!\n");
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
+		Lexer lexer = new Lexer(reader);
+		LookAhead1 look = null;
+		try {
+			look = new LookAhead1(lexer);
+		} catch (Exception e) {
+			out.println("Cannot create the lookAhead1. Maybe an empty input.");
+			e.printStackTrace();
+			System.out.println("BANANANANNANANANNANAN");
+		}
+		
+		Parser parser = new Parser(look);
+		try {
+			Instruction inst = parser.build();
+			out.println("The expression is correct.");
+			//TODO inst.exec();
+		} catch (Exception e) {
+        	out.println("The expression is not correct.");
+        	out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		System.out.println("Done");
+	}
 	
 }

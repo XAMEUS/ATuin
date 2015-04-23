@@ -102,6 +102,12 @@ public class GMenuFX extends HBox {
 		Menu menu = new Menu("Run");
 		
 		MenuItem run = new MenuItem("Run");
+		run.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Controller.run(editor);
+			}
+		});
 		
 		menu.getItems().add(run);
 		menu.getItems().add(new MenuItem("Run + Interpreter"));

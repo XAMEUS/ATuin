@@ -42,6 +42,10 @@ public class GEditorFX extends BorderPane {
 		
 	}
 	
+	public String getText() {
+		return this.textEditor.getText();
+	}
+	
 	public void newFile() {
 		this.textEditor.newTab();
 	}
