@@ -1,6 +1,7 @@
 package org.ui;
 
 import org.ui.console.GConsoleFX;
+import org.ui.controller.Controller;
 import org.ui.doc.GDocView;
 import org.ui.editor.GEditorFX;
 import org.ui.menu.GMenuFX;
@@ -24,7 +25,10 @@ public class RootLayout extends BorderPane {
 	private double yOffset = 0;
 
 	public RootLayout(Stage primaryStage) {
-
+		
+		GConsoleFX gc = new GConsoleFX();
+		Controller.out = gc;
+		
 		this.editor = new GEditorFX();
 		editor.getStyleClass().add("pane");
 		GMenuFX menubar = new GMenuFX(primaryStage, editor);
@@ -51,14 +55,8 @@ public class RootLayout extends BorderPane {
 		
 		TabPane bottom = new TabPane();
 		bottom.getStyleClass().add("pane");
-		bottom.getTabs().add(new GConsoleFX());
+		bottom.getTabs().add(Controller.out);
 		
-		/*t6 = new Tab("Doc");
-		t6.setClosable(false);
-		WebView content = new WebView();
-		content.getEngine().load(Doc.getRessource("index.html"));
-		t6.setContent(content);
-		bottom.getTabs().add(t6);*/
 		bottom.getTabs().add(new GDocView());
 		
 		wrapper.addNodes(editor, bottom);

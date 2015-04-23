@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
+import org.ui.controller.Controller;
 import org.ui.editor.GEditorFX;
 
 public class GMenuFX extends HBox {
@@ -68,6 +69,7 @@ public class GMenuFX extends HBox {
 			@Override
 			public void handle(ActionEvent event) {
 				GMenuFX.this.editor.newFile();
+				Controller.out.println("New file created...");
 			}
 		});
 		menu.getItems().add(newFile);
@@ -99,7 +101,9 @@ public class GMenuFX extends HBox {
 
 		Menu menu = new Menu("Run");
 		
-		menu.getItems().add(new MenuItem("Run"));
+		MenuItem run = new MenuItem("Run");
+		
+		menu.getItems().add(run);
 		menu.getItems().add(new MenuItem("Run + Interpreter"));
 		
 		this.menuBar.getMenus().add(menu);
