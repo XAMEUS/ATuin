@@ -1,27 +1,34 @@
 package org.ui.canvas;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 public class ResizableCanvas extends Canvas {
-	
+
 	public ResizableCanvas() {
-		// TODO Auto-generated constructor stub
+		widthProperty().addListener(evt -> draw());
+		heightProperty().addListener(evt -> draw());
 	}
-	
+
 	private void draw() {
-		// TODO
+		
+		 double width = getWidth();
+         double height = getHeight();
+
+         GraphicsContext gc = getGraphicsContext2D();
+         gc.clearRect(0, 0, width, height);
 	}
-	
+
 	@Override
 	public boolean isResizable() {
 		return true;
 	}
-	
+
 	@Override
 	public double prefWidth(double height) {
 		return this.getWidth();
 	}
-	
+
 	@Override
 	public double prefHeight(double width) {
 		return this.getHeight();
