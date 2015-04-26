@@ -6,16 +6,20 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+import javafx.stage.Stage;
+
 import org.core.lexer.Lexer;
 import org.core.parser.LookAhead1;
 import org.core.parser.Parser;
 import org.core.syntax.Instruction;
 import org.ui.console.GConsoleFX;
+import org.ui.dialogs.Dialogs;
 import org.ui.editor.GEditorFX;
 
 public class Controller {
 	
 	public static GConsoleFX out;
+	public static Stage primaryStage;
 	
 	public static void run(GEditorFX gefx) {
 		
@@ -26,7 +30,7 @@ public class Controller {
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+
 		File input = new File("src.txt");
 		FileReader reader = null;
 		try {
@@ -42,9 +46,8 @@ public class Controller {
 		try {
 			look = new LookAhead1(lexer);
 		} catch (Exception e) {
-			out.println("Cannot create the lookAhead1. Maybe an empty input.");
+			out.println("Cannot create the lookAhead1. Incorrect input.");
 			e.printStackTrace();
-			System.out.println("BANANANANNANANANNANAN");
 		}
 		
 		Parser parser = new Parser(look);
@@ -57,6 +60,8 @@ public class Controller {
         	out.println(e.getMessage());
 			e.printStackTrace();
 		}
+		
+		Dialogs.showMessage(primaryStage, "hello");
 		System.out.println("Done");
 	}
 	

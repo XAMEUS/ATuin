@@ -1,5 +1,6 @@
 package org.ui;
 
+import org.ui.canvas.ResizableCanvas;
 import org.ui.console.GConsoleFX;
 import org.ui.controller.Controller;
 import org.ui.doc.GDocView;
@@ -8,14 +9,13 @@ import org.ui.menu.GMenuFX;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class RootLayout extends BorderPane {
@@ -56,37 +56,28 @@ public class RootLayout extends BorderPane {
 		TabPane bottom = new TabPane();
 		bottom.getStyleClass().add("pane");
 		bottom.getTabs().add(Controller.out);
-		
 		bottom.getTabs().add(new GDocView());
-		
+
 		wrapper.addNodes(editor, bottom);
+
+		TabPaneWrapper wrap = new TabPaneWrapper(Orientation.HORIZONTAL, .4);
 		
-		this.setCenter(wrapper.getNode());
+		StackPane sp = new StackPane();
+		Canvas canvas = new ResizableCanvas();
+		sp.getChildren().add(canvas);
 		
+		// Bind canvas size to stack pane size.
+		canvas.widthProperty().bind(sp.widthProperty());
+		canvas.heightProperty().bind(sp.heightProperty());
+		
+		wrap.addNodes(wrapper.getNode(), sp);
+
+		this.setCenter(wrap.getNode());
+
 	}
 	
 	public void drawInfos() {
 		editor.drawInfos();
 	}
 	
-}
-
-
-class TabPaneWrapper {
-	
-	private SplitPane split;
-
-	public TabPaneWrapper(Orientation o, double splitLocation) {
-		split = new SplitPane();
-		split.setOrientation(o);
-		split.setDividerPosition(0, splitLocation);
-	}
-
-	public void addNodes(final Node node1, final Node node2) {
-		split.getItems().addAll(node1, node2);
-	}
-
-	public Parent getNode() {
-		return split;
-	}
 }

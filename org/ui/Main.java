@@ -1,6 +1,7 @@
 package org.ui;
 
 import org.img.Img;
+import org.ui.controller.Controller;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -19,9 +20,10 @@ public class Main extends Application {
 		this.primarySage = primaryStage;
 		this.primarySage.setTitle("TortueAj1n");
 		this.primarySage.getIcons().add(new Image(Img.class.getResource("logo4.png").toString()));
-		this.primarySage.setWidth(620);
+		this.primarySage.setWidth(820);
 		this.primarySage.setHeight(600);
 		//this.primarySage.initStyle(StageStyle.TRANSPARENT);
+		Controller.primaryStage = primaryStage;
 		
 		this.rootLayout = new RootLayout(this.primarySage);
 		

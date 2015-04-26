@@ -2,6 +2,7 @@ package org.ui.canvas;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class ResizableCanvas extends Canvas {
 
@@ -16,7 +17,10 @@ public class ResizableCanvas extends Canvas {
          double height = getHeight();
 
          GraphicsContext gc = getGraphicsContext2D();
+         gc.setFill(new Color(1, 1, 1, 1));
+         gc.setStroke(new Color(0.98, 0.98, 0.98, 1));
          gc.clearRect(0, 0, width, height);
+         gc.fillRect(0, 0, width, height);
 	}
 
 	@Override
