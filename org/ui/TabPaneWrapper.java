@@ -22,4 +22,8 @@ class TabPaneWrapper {
 	public Parent getNode() {
 		return split;
 	}
+	
+	public SplitPane getSplitPane() {
+		return this.split;
+	}
 }
