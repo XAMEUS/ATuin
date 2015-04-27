@@ -30,7 +30,7 @@ public class GEditorFX extends BorderPane {
 	}
 	
 	public void drawInfos() {
-		
+
 		if (this.textEditor.getTabs().size() > 0) {
 			this.textInfos = new GTextInfosFX(this.getWidth(), this.textEditor.getText(), this.textEditor.getCursorPosition());
 			this.setBottom(this.textInfos);

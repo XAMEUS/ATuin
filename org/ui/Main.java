@@ -37,6 +37,7 @@ public class Main extends Application {
 		this.primarySage.show();
 		
 		this.rootLayout.drawInfos();
+		primaryStage.sizeToScene();
 		
 	}
 	
