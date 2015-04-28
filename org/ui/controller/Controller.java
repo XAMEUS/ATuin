@@ -100,6 +100,8 @@ public class Controller {
 		Instruction inst = build(gefx);
 		try {
 			inst.exec();
+			System.out.println("Executed...");
+			out.println("Executed...");
 		} catch (Exception e) {
 			out.println(e.getMessage());
     		Dialogs.showErrorMessage(primaryStage, "Execution error.", e.getMessage());
