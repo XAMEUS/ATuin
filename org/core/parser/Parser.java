@@ -77,27 +77,30 @@ public class Parser {
 		if (reader.check(Sym.FORWARD)) {
 			reader.eat(Sym.FORWARD);
 			Expression exp = expression();
-			//TODO create Forward Instruction
+			Instruction instr = new Forward(exp);
 			reader.eat(Sym.ENDL);
+			return instr;
 		}
 		if (reader.check(Sym.TURN)) {
 			reader.eat(Sym.TURN);
 			Expression exp = expression();
-			//TODO create Turn Instruction
+			Instruction instr = new Turn(exp);
 			reader.eat(Sym.ENDL);
+			return instr;
 		}
 		if (reader.check(Sym.UP)) {
 			reader.eat(Sym.UP);
-			//TODO create Up Instruction
+			Instruction instr = new Up();
 			reader.eat(Sym.ENDL);
+			return instr;
 		}
 		if (reader.check(Sym.DOWN)) {
 			reader.eat(Sym.DOWN);
-			//TODO create Up Instruction
+			Instruction instr = new Down();
 			reader.eat(Sym.ENDL);
+			return instr;
 		}
-		
-		return null;
+		throw new Exception("Cannot reduce inst");
 	}
 	
 	private LinkedInst procedure() throws Exception {
