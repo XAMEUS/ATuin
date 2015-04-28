@@ -91,7 +91,7 @@ public class GMenuFX extends HBox {
 		
 		menu.getItems().add(new MenuItem("Cut"));
 		menu.getItems().add(new MenuItem("Copy"));
-		menu.getItems().add(new MenuItem("Past"));
+		menu.getItems().add(new MenuItem("Paste"));
 		
 		
 		this.menuBar.getMenus().add(menu);
