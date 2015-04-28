@@ -34,8 +34,6 @@ public class GEditorFX extends BorderPane {
 			public void changed(ObservableValue<? extends Number> observable,
 					Number oldValue, Number newValue) {
 				drawInfos();
-				System.out.println(getWidth());
-				
 			}
 		});
 		

@@ -97,9 +97,11 @@ public class Parser {
 	}
 	
 	private LinkedInst procedure() throws Exception {
-		if (reader.check(Sym.EOF) || reader.check(Sym.RBRA) || reader.check(Sym.END))
-			return null;
-		return new LinkedInst(inst(), procedure());
+		if (reader.check(Sym.VARIABLE) || reader.check(Sym.START) ||
+				reader.check(Sym.FORWARD) || reader.check(Sym.TURN) || 
+				reader.check(Sym.UP) || reader.check(Sym.DOWN))
+			return new LinkedInst(inst(), procedure());
+		return null;
 	}
 	
 	private Expression expression() throws Exception {

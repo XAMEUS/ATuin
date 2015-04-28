@@ -13,7 +13,7 @@ import javafx.stage.StageStyle;
 
 public class Dialogs {
 	
-	public static void showMessage(Stage primaryStage, String msg) {
+	public static void showMessage(Stage primaryStage, String title, String msg) {
 		final Stage dialog = new Stage();
 		dialog.initStyle(StageStyle.UTILITY);
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -22,12 +22,13 @@ public class Dialogs {
         StackPane sp = new StackPane();
         sp.setPrefSize(0, 50);
         sp.setStyle("-fx-background-color: #ee3311");
-        Text t = new Text(msg);
+        Text t = new Text(title);
         t.setStrokeWidth(4);
         sp.getChildren().add(t);
         bp.setTop(sp);
         TextArea ta = new TextArea();
         ta.setEditable(false);
+        ta.setText(msg);
         bp.setCenter(ta);
         Button b = new Button("close");
         //bp.setBottom(b);
