@@ -10,8 +10,12 @@ import org.core.syntax.expressions.Sum;
 import org.core.syntax.expressions.Variable;
 import org.core.syntax.instructions.Assign;
 import org.core.syntax.instructions.Decl;
+import org.core.syntax.instructions.Down;
+import org.core.syntax.instructions.Forward;
 import org.core.syntax.instructions.LinkedInst;
 import org.core.syntax.instructions.Program;
+import org.core.syntax.instructions.Turn;
+import org.core.syntax.instructions.Up;
 import org.core.tokens.Sym;
 
 public class Parser {
