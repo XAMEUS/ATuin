@@ -1,41 +1,38 @@
 package org.ui.canvas;
 
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.Pane;
 
-public class ResizableCanvas extends Canvas {
+public abstract class ResizableCanvas extends Pane {
 
-	public ResizableCanvas() {
-		widthProperty().addListener(evt -> draw());
-		heightProperty().addListener(evt -> draw());
-	}
+    protected final Canvas canvas = new Canvas();
 
-	private void draw() {
-		
-		 double width = getWidth();
-         double height = getHeight();
+    public ResizableCanvas() {
+        getChildren().add(canvas);
+    }
 
-         GraphicsContext gc = getGraphicsContext2D();
-         gc.setFill(new Color(1, 1, 1, 1));
-         gc.setStroke(new Color(0.98, 0.98, 0.98, 1));
-         gc.clearRect(0, 0, width, height);
-         gc.fillRect(0, 0, width, height);
-	}
-
-	@Override
+    @Override
+    protected void layoutChildren() {
+        final int top = (int)snappedTopInset();
+        final int right = (int)snappedRightInset();
+        final int bottom = (int)snappedBottomInset();
+        final int left = (int)snappedLeftInset();
+        final int w = (int)getWidth() - left - right;
+        final int h = (int)getHeight() - top - bottom;
+        canvas.setLayoutX(left);
+        canvas.setLayoutY(top);
+        if (w != canvas.getWidth() || h != canvas.getHeight()) {
+            canvas.setWidth(w);
+            canvas.setHeight(h);
+            this.draw();
+        }
+    }
+    
+    public abstract void draw();
+    
+    @Override
 	public boolean isResizable() {
 		return true;
-	}
-
-	@Override
-	public double prefWidth(double height) {
-		return this.getWidth();
-	}
-
-	@Override
-	public double prefHeight(double width) {
-		return this.getHeight();
 	}
 
 }
