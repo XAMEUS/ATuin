@@ -13,7 +13,7 @@ import javafx.stage.StageStyle;
 
 public class Dialogs {
 	
-	public static void showMessage(Stage primaryStage, String title, String msg) {
+	public static void showErrorMessage(Stage primaryStage, String title, String msg) {
 		final Stage dialog = new Stage();
 		dialog.initStyle(StageStyle.UTILITY);
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -33,7 +33,7 @@ public class Dialogs {
         Button b = new Button("close");
         //bp.setBottom(b);
         BorderPane.setAlignment(b, Pos.BOTTOM_RIGHT);
-        Scene dialogScene = new Scene(bp, 300, 200);
+        Scene dialogScene = new Scene(bp, 400, 120);
         dialog.setTitle("Error");
         dialog.setScene(dialogScene);
         dialog.setResizable(false);
