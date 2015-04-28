@@ -1,15 +1,7 @@
 package org.ui;
 
-import org.ui.canvas.ResizableCanvas;
-import org.ui.console.GConsoleFX;
-import org.ui.controller.Controller;
-import org.ui.doc.GDocView;
-import org.ui.editor.GEditorFX;
-import org.ui.menu.GMenuFX;
-
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TabPane;
@@ -17,6 +9,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import org.ui.canvas.GDrawingFX;
+import org.ui.canvas.ResizableCanvas;
+import org.ui.console.GConsoleFX;
+import org.ui.controller.Controller;
+import org.ui.doc.GDocView;
+import org.ui.editor.GEditorFX;
+import org.ui.menu.GMenuFX;
 
 public class RootLayout extends BorderPane {
 	
@@ -63,12 +63,8 @@ public class RootLayout extends BorderPane {
 		TabPaneWrapper wrap = new TabPaneWrapper(Orientation.HORIZONTAL, .4);
 		
 		StackPane sp = new StackPane();
-		Canvas canvas = new ResizableCanvas();
+		ResizableCanvas canvas = new GDrawingFX();
 		sp.getChildren().add(canvas);
-		
-		// Bind canvas size to stack pane size.
-		canvas.widthProperty().bind(sp.widthProperty());
-		canvas.heightProperty().bind(sp.heightProperty());
 		
 		wrap.addNodes(wrapper.getNode(), sp);
 

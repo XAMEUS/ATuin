@@ -1,24 +1,34 @@
 package org.ui.editor;
 
-import javafx.scene.canvas.Canvas;
+import org.ui.canvas.ResizableCanvas;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
-public class GTextInfosFX extends Canvas {
+public class GTextInfosFX extends ResizableCanvas {
 	
 	private double width;
+	private String text;
+	private int pos;
 	
 	public GTextInfosFX(double w, String text, int pos) {
 		this.width = w;
-		this.setWidth(w);
-		this.setHeight(20);
+		this.text = text;
+		this.pos = pos;
+		this.canvas.setWidth(w);
+		this.canvas.setHeight(20);
+		this.draw(text, pos);
+		this.setMinWidth(260);
+	}
+	
+	public void draw() {
 		this.draw(text, pos);
 	}
 	
-	public void draw(String t, int pos) {
+	private void draw(String t, int pos) {
 		
-		GraphicsContext gc = this.getGraphicsContext2D();
+		GraphicsContext gc = this.canvas.getGraphicsContext2D();
 		gc.setFill(new Color(0, 0, 0, 1));
 		
 		int l = 0;

@@ -1,5 +1,7 @@
 package org.ui.editor;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.layout.BorderPane;
 
 public class GEditorFX extends BorderPane {
@@ -26,6 +28,16 @@ public class GEditorFX extends BorderPane {
 		this.textEditor.getTextArea().setText(t);
 		this.textEditor.setTabName("Example File");
 		this.setCenter(textEditor);
+		
+		this.widthProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable,
+					Number oldValue, Number newValue) {
+				drawInfos();
+				System.out.println(getWidth());
+				
+			}
+		});
 		
 	}
 	
