@@ -2,6 +2,7 @@ package org.core.syntax.instructions;
 
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
+import org.ui.controller.Controller;
 
 public class Print extends Instruction {
 	
@@ -13,7 +14,9 @@ public class Print extends Instruction {
 	
 	@Override
 	public void exec() throws Exception {
-		System.out.println(expression.eval());
+		int v = expression.eval();
+		System.out.println(v);
+		Controller.out.println(""+v);
 	}
 
 }

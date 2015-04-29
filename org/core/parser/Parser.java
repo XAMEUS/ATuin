@@ -13,6 +13,7 @@ import org.core.syntax.instructions.Decl;
 import org.core.syntax.instructions.Down;
 import org.core.syntax.instructions.Forward;
 import org.core.syntax.instructions.LinkedInst;
+import org.core.syntax.instructions.Print;
 import org.core.syntax.instructions.Program;
 import org.core.syntax.instructions.Turn;
 import org.core.syntax.instructions.Up;
@@ -60,6 +61,12 @@ public class Parser {
 	}
 
 	private Instruction inst() throws Exception {
+		if (reader.check(Sym.PRINT)) {
+    		reader.eat(Sym.PRINT);
+    		Instruction instr =  new Print(expression());
+    		reader.eat(Sym.ENDL);
+    		return instr;
+    	}
 		if (reader.check(Sym.VARIABLE)) {
 			String s = reader.getStringValue();
     		reader.eat(Sym.VARIABLE);
@@ -106,6 +113,7 @@ public class Parser {
 	private LinkedInst procedure() throws Exception {
 		if (reader.check(Sym.VARIABLE) || reader.check(Sym.START) ||
 				reader.check(Sym.FORWARD) || reader.check(Sym.TURN) || 
+				reader.check(Sym.PRINT) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());
 		return null;
