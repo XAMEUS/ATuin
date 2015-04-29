@@ -24,6 +24,12 @@ public enum Sym {
     TIMES,
     DIV,
     
+    AND,
+    OR,
+    XOR,
+    INF,
+    SUP,
+    
     FORWARD,
     TURN,
     

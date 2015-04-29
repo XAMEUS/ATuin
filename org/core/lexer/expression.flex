@@ -44,6 +44,11 @@ variable = [a-z][a-zA-Z]*
 	"/" {return token(Sym.DIV);}
 	
 	"=" {return token(Sym.EQ);}
+	"<" {return token(Sym.INF);}
+	">" {return token(Sym.SUP);}
+	"and" {return token(Sym.AND);}
+	"or" {return token(Sym.OR);}
+	"xor" {return token(Sym.XOR);}
 	
 	"{" {return token(Sym.LBRA);}
 	"}" {return token(Sym.RBRA);}
