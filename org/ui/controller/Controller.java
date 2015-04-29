@@ -96,17 +96,29 @@ public class Controller {
 		
 	}
 	
+	public static Program load_build(String filename) {
+		
+		//TODO
+		return null;
+		
+	}
+	
 	public static void run(GEditorFX gefx) {
+		
 		Instruction inst = build(gefx);
-		try {
-			inst.exec();
-			System.out.println("Executed...");
-			out.println("Executed...");
-		} catch (Exception e) {
-			out.println(e.getMessage());
-    		Dialogs.showErrorMessage(primaryStage, "Execution error.", e.getMessage());
-			e.printStackTrace();
+		
+		if (inst != null) {
+			try {
+				inst.exec();
+				System.out.println("Executed...");
+				out.println("Executed...");
+			} catch (Exception e) {
+				out.println(e.getMessage());
+	    		Dialogs.showErrorMessage(primaryStage, "Execution error.", e.getMessage());
+				e.printStackTrace();
+			}
 		}
+		
 	}
 	
 }
