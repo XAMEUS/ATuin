@@ -2,9 +2,13 @@ package org.core.parser;
 
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
+import org.core.syntax.expressions.And;
 import org.core.syntax.expressions.Difference;
 import org.core.syntax.expressions.Division;
+import org.core.syntax.expressions.Equal;
+import org.core.syntax.expressions.Inf;
 import org.core.syntax.expressions.Int;
+import org.core.syntax.expressions.Or;
 import org.core.syntax.expressions.Product;
 import org.core.syntax.expressions.Sum;
 import org.core.syntax.expressions.Variable;
@@ -159,6 +163,41 @@ public class Parser {
 			reader.eat(Sym.DIV);
 			Expression right = expression();
 			return new Division(left, right);
+		}
+		if (reader.check(Sym.AND)) {
+			reader.eat(Sym.AND);
+			Expression right = expression();
+			return new And(left, right);
+		}
+		if (reader.check(Sym.OR)) {
+			reader.eat(Sym.OR);
+			Expression right = expression();
+			return new Or(left, right);
+		}
+		if (reader.check(Sym.EQ)) {
+			reader.eat(Sym.EQ);
+			Expression right = expression();
+			return new Equal(left, right);
+		}
+		if (reader.check(Sym.INF)) {
+			reader.eat(Sym.INF);
+			boolean strict = true;
+			if (reader.check(Sym.EQ)) {
+				reader.eat(Sym.EQ);
+				strict = false;
+			}
+			Expression right = expression();
+			return new Inf(left, right, strict);
+		}
+		if (reader.check(Sym.SUP)) {
+			reader.eat(Sym.SUP);
+			boolean strict = true;
+			if (reader.check(Sym.EQ)) {
+				reader.eat(Sym.EQ);
+				strict = false;
+			}
+			Expression right = expression();
+			return new Inf(left, right, strict);
 		}
 		return left;
 	}
