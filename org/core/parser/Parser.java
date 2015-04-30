@@ -12,6 +12,7 @@ import org.core.syntax.expressions.Or;
 import org.core.syntax.expressions.Product;
 import org.core.syntax.expressions.Sum;
 import org.core.syntax.expressions.Variable;
+import org.core.syntax.expressions.Xor;
 import org.core.syntax.instructions.Assign;
 import org.core.syntax.instructions.Decl;
 import org.core.syntax.instructions.Down;
@@ -173,6 +174,11 @@ public class Parser {
 			reader.eat(Sym.OR);
 			Expression right = expression();
 			return new Or(left, right);
+		}
+		if (reader.check(Sym.XOR)) {
+			reader.eat(Sym.XOR);
+			Expression right = expression();
+			return new Xor(left, right);
 		}
 		if (reader.check(Sym.EQ)) {
 			reader.eat(Sym.EQ);
