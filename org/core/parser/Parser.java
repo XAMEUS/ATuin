@@ -76,17 +76,23 @@ public class Parser {
 		if (reader.check(Sym.IF)) {
     		reader.eat(Sym.IF);
 			Expression exp = expression();
+			reader.eat(Sym.LBRA);
 			Instruction instr = inst();
+			reader.eat(Sym.RBRA);
     		If c = new If(exp, instr);
     		while (reader.check(Sym.ELIF)) {
     			reader.eat(Sym.ELIF);
     			exp = expression();
+    			reader.eat(Sym.LBRA);
     			instr = inst();
+    			reader.eat(Sym.RBRA);
     			c.add(exp, instr);
 			}
     		if (reader.check(Sym.ELSE)) {
     			reader.eat(Sym.ELSE);
+    			reader.eat(Sym.LBRA);
     			instr = inst();
+    			reader.eat(Sym.RBRA);
     			c.add(null, instr);
     		}
     		return c;
