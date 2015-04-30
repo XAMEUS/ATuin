@@ -18,7 +18,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		
 		this.primarySage = primaryStage;
-		this.primarySage.setTitle("TortueAj1n");
+		this.primarySage.setTitle("LogoTurtle");
 		this.primarySage.getIcons().add(new Image(Img.class.getResource("logo4.png").toString()));
 		this.primarySage.setWidth(820);
 		this.primarySage.setHeight(600);
