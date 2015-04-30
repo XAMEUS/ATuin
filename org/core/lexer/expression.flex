@@ -50,6 +50,8 @@ variable = [a-z][a-zA-Z]*
 	"or" {return token(Sym.OR);}
 	"xor" {return token(Sym.XOR);}
 	
+	"not" {return token(Sym.NOT);}
+	
 	"{" {return token(Sym.LBRA);}
 	"}" {return token(Sym.RBRA);}
 	

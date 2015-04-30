@@ -24,6 +24,7 @@ public enum Sym {
     TIMES,
     DIV,
     
+    NOT,
     AND,
     OR,
     XOR,

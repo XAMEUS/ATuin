@@ -8,6 +8,7 @@ import org.core.syntax.expressions.Division;
 import org.core.syntax.expressions.Equal;
 import org.core.syntax.expressions.Inf;
 import org.core.syntax.expressions.Int;
+import org.core.syntax.expressions.Not;
 import org.core.syntax.expressions.Or;
 import org.core.syntax.expressions.Product;
 import org.core.syntax.expressions.Sum;
@@ -161,6 +162,11 @@ public class Parser {
 			Expression exp = new Variable(reader.getStringValue());
 			reader.eat(Sym.VARIABLE);
 			return expFollow(exp);
+		}
+		else if (reader.check(Sym.NOT)) {
+			reader.eat(Sym.NOT);
+			Expression exp = expression();
+			return new Not(exp);
 		}
 		else {
 			reader.eat(Sym.LPAR);
