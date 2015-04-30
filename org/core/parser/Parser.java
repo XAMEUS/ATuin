@@ -94,6 +94,7 @@ public class Parser {
 		if (reader.check(Sym.VARIABLE)) {
 			String s = reader.getStringValue();
     		reader.eat(Sym.VARIABLE);
+    		reader.eat(Sym.COLON);
     		reader.eat(Sym.EQ);
     		Instruction instr = new Assign(s, expression());
     		reader.eat(Sym.ENDL);

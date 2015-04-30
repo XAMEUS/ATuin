@@ -65,6 +65,7 @@ variable = [a-z][a-zA-Z]*
 	"start" {return token(Sym.START);}
 	"end" {return token(Sym.END);}
 	
+	":" {return token(Sym.COLON);}
 	";" {return token(Sym.ENDL);}
 	
 	"print" {return token(Sym.PRINT);}
