@@ -30,6 +30,10 @@ public enum Sym {
     INF,
     SUP,
     
+    IF,
+    ELIF,
+    ELSE,
+    
     FORWARD,
     TURN,
     

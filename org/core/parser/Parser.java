@@ -17,6 +17,7 @@ import org.core.syntax.instructions.Assign;
 import org.core.syntax.instructions.Decl;
 import org.core.syntax.instructions.Down;
 import org.core.syntax.instructions.Forward;
+import org.core.syntax.instructions.If;
 import org.core.syntax.instructions.LinkedInst;
 import org.core.syntax.instructions.Print;
 import org.core.syntax.instructions.Program;
@@ -72,6 +73,24 @@ public class Parser {
     		reader.eat(Sym.ENDL);
     		return instr;
     	}
+		if (reader.check(Sym.IF)) {
+    		reader.eat(Sym.IF);
+			Expression exp = expression();
+			Instruction instr = inst();
+    		If c = new If(exp, instr);
+    		while (reader.check(Sym.ELIF)) {
+    			reader.eat(Sym.ELIF);
+    			exp = expression();
+    			instr = inst();
+    			c.add(exp, instr);
+			}
+    		if (reader.check(Sym.ELSE)) {
+    			reader.eat(Sym.ELSE);
+    			instr = inst();
+    			c.add(null, instr);
+    		}
+    		return c;
+    	}
 		if (reader.check(Sym.VARIABLE)) {
 			String s = reader.getStringValue();
     		reader.eat(Sym.VARIABLE);
@@ -118,7 +137,8 @@ public class Parser {
 	private LinkedInst procedure() throws Exception {
 		if (reader.check(Sym.VARIABLE) || reader.check(Sym.START) ||
 				reader.check(Sym.FORWARD) || reader.check(Sym.TURN) || 
-				reader.check(Sym.PRINT) ||
+				reader.check(Sym.PRINT) || reader.check(Sym.IF) ||
+				reader.check(Sym.ELIF) || reader.check(Sym.ELSE) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());
 		return null;
