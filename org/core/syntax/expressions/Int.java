@@ -1,17 +1,18 @@
 package org.core.syntax.expressions;
 
+import org.core.env.Number;
 import org.core.syntax.Expression;
 
 public class Int extends Expression {
 	
-	private int value;
+	private Number value;
 	
-	public Int(int value) {
+	public Int(Number value) {
 		this.value = value;
 	}
 	
 	@Override
-	public int eval() throws Exception {
+	public Number eval() throws Exception {
 		return this.value;
 	}
 

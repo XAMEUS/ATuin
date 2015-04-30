@@ -1,5 +1,7 @@
 package org.core.syntax;
 
+import org.core.env.Number;
+
 public abstract class Expression {
-	public abstract int eval() throws Exception;
+	public abstract Number eval() throws Exception;
 }

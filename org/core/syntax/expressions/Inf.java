@@ -1,5 +1,7 @@
 package org.core.syntax.expressions;
 
+import org.core.env.Number;
+import org.core.env.Values;
 import org.core.syntax.Expression;
 
 public class Inf extends Expression {
@@ -14,12 +16,12 @@ public class Inf extends Expression {
 	}
 	
 	@Override
-	public int eval() throws Exception {
-		if (this.left.eval() > this.right.eval())
-			return 0;
-		if (this.strict && this.left.eval() == this.right.eval())
-			return 0;
-		return 1;
+	public Number eval() throws Exception {
+		if (this.left.eval().superior(this.right.eval()))
+			return Values.FALSE.getValue();
+		if (this.strict && this.left.eval().equals(this.right.eval()))
+			return Values.FALSE.getValue();
+		return Values.TRUE.getValue();
 	}
 
 }

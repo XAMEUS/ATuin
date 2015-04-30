@@ -1,5 +1,6 @@
 package org.core.parser;
 
+import org.core.env.Number;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 import org.core.syntax.expressions.And;
@@ -154,7 +155,7 @@ public class Parser {
 	
 	private Expression expression() throws Exception {
 		if (reader.check(Sym.INT)) {
-			Expression exp = new Int(reader.getIntValue());
+			Expression exp = new Int(new Number(reader.getIntValue()));
 			reader.eat(Sym.INT);
 			return expFollow(exp);
 		}

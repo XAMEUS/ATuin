@@ -1,13 +1,13 @@
 package org.core.env;
 
 public enum Values {
-	TRUE (1),
-	FALSE (0);
-	private int value;
-	private Values(int value) {
+	TRUE (new Number(1)),
+	FALSE (new Number(0));
+	private Number value;
+	private Values(Number value) {
 		this.value = value;
 	}
-	public int getValue() {
+	public Number getValue() {
         return value;
     }
 }

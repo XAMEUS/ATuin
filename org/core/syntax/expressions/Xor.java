@@ -1,5 +1,7 @@
 package org.core.syntax.expressions;
 
+import org.core.env.Number;
+import org.core.env.Values;
 import org.core.syntax.Expression;
 
 public class Xor extends Expression {
@@ -12,10 +14,11 @@ public class Xor extends Expression {
 	}
 	
 	@Override
-	public int eval() throws Exception {
-		if (this.left.eval() == 1 ^ this.right.eval() == 1)
-			return 1;
-		return 0;
+	public Number eval() throws Exception {
+		if (!this.left.eval().equals(Values.FALSE.getValue()) ^ 
+				!this.right.eval().equals(Values.FALSE.getValue()))
+			return Values.TRUE.getValue();
+		return Values.FALSE.getValue();
 	}
 
 }

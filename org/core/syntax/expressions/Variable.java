@@ -1,5 +1,6 @@
 package org.core.syntax.expressions;
 
+import org.core.env.Number;
 import org.core.env.ValueEnvionment;
 import org.core.syntax.Expression;
 
@@ -12,7 +13,7 @@ public class Variable extends Expression {
 	}
 	
 	@Override
-	public int eval() throws Exception {
+	public Number eval() throws Exception {
 		return ValueEnvionment.getValue(this.name);
 	}
 

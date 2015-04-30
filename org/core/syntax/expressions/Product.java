@@ -1,5 +1,6 @@
 package org.core.syntax.expressions;
 
+import org.core.env.Number;
 import org.core.syntax.Expression;
 
 public class Product extends Expression {
@@ -12,8 +13,8 @@ public class Product extends Expression {
 	}
 	
 	@Override
-	public int eval() throws Exception {
-		return this.left.eval() * this.right.eval();
+	public Number eval() throws Exception {
+		return this.left.eval().multiply(this.right.eval());
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.core.syntax.instructions;
 
+import org.core.env.Number;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 import org.ui.controller.Controller;
@@ -14,9 +15,9 @@ public class Print extends Instruction {
 	
 	@Override
 	public void exec() throws Exception {
-		int v = expression.eval();
-		System.out.println(v);
-		Controller.out.println(""+v);
+		Number n = expression.eval();
+		System.out.println(n);
+		Controller.out.println(""+n);
 	}
 
 }
