@@ -60,6 +60,7 @@ variable = [a-z][a-zA-Z]*
 	"else" {return token(Sym.ELSE);}
 	"for" {return token(Sym.FOR);}
 	"pass" {return token(Sym.PASS);}
+	"def" {return token(Sym.DEF);}
 	
 	"var" {return token(Sym.VAR);}
 	"forward" {return token(Sym.FORWARD);}
@@ -69,6 +70,7 @@ variable = [a-z][a-zA-Z]*
 	"start" {return token(Sym.START);}
 	"end" {return token(Sym.END);}
 	
+	"," {return token(Sym.COMMA);}
 	":" {return token(Sym.COLON);}
 	";" {return token(Sym.ENDL);}
 	

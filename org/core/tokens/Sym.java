@@ -36,6 +36,7 @@ public enum Sym {
     ELSE,
     FOR,
     PASS,
+    DEF,
     
     FORWARD,
     TURN,
@@ -44,6 +45,7 @@ public enum Sym {
     DOWN,
     
     COLON,
+    COMMA,
     EQ
     
     ;
