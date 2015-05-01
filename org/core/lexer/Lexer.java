@@ -40,8 +40,8 @@ public class Lexer {
     "\11\0\1\1\1\1\2\0\1\1\22\0\1\1\7\0\1\6\1\7"+
     "\1\12\1\10\1\0\1\11\1\0\1\13\1\3\11\2\1\41\1\42"+
     "\1\15\1\14\1\16\2\0\32\5\6\0\1\17\2\4\1\21\1\32"+
-    "\1\31\2\4\1\30\2\4\1\33\1\4\1\20\1\22\1\40\1\4"+
-    "\1\23\1\34\1\25\1\37\1\35\1\36\1\24\2\4\1\26\1\0"+
+    "\1\31\2\4\1\30\2\4\1\33\1\4\1\20\1\22\1\35\1\4"+
+    "\1\23\1\34\1\25\1\40\1\36\1\37\1\24\2\4\1\26\1\0"+
     "\1\27\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff92\0";
 
   /** 
@@ -58,12 +58,12 @@ public class Lexer {
     "\1\0\1\1\1\2\2\3\1\4\1\5\1\6\1\7"+
     "\1\10\1\11\1\12\1\13\1\14\1\15\6\4\1\16"+
     "\1\17\7\4\1\20\1\21\3\4\1\22\2\4\1\23"+
-    "\5\4\1\24\1\4\1\25\1\26\1\4\1\27\1\4"+
-    "\1\30\1\31\3\4\1\32\1\4\1\33\1\34\1\4"+
-    "\1\35\1\36\3\4\1\37\1\40\1\4\1\41";
+    "\7\4\1\24\1\25\1\26\1\4\1\27\1\4\1\30"+
+    "\1\31\5\4\1\32\1\33\1\34\1\4\1\35\1\36"+
+    "\1\4\1\37\2\4\1\40\1\41\1\4\1\42";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[70];
+    int [] result = new int[73];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -93,13 +93,14 @@ public class Lexer {
     "\0\257\0\322\0\365\0\u0118\0\u013b\0\43\0\43\0\u015e"+
     "\0\u0181\0\u01a4\0\u01c7\0\u01ea\0\u020d\0\u0230\0\43\0\43"+
     "\0\u0253\0\u0276\0\u0299\0\151\0\u02bc\0\u02df\0\151\0\u0302"+
-    "\0\u0325\0\u0348\0\u036b\0\u038e\0\151\0\u03b1\0\151\0\151"+
-    "\0\u03d4\0\151\0\u03f7\0\u041a\0\151\0\u043d\0\u0460\0\u0483"+
-    "\0\151\0\u04a6\0\151\0\151\0\u04c9\0\151\0\151\0\u04ec"+
-    "\0\u050f\0\u0532\0\151\0\151\0\u0555\0\151";
+    "\0\u0325\0\u0348\0\u036b\0\u038e\0\u03b1\0\u03d4\0\151\0\151"+
+    "\0\151\0\u03f7\0\151\0\u041a\0\u043d\0\151\0\u0460\0\u0483"+
+    "\0\u04a6\0\u04c9\0\u04ec\0\151\0\151\0\151\0\u050f\0\151"+
+    "\0\151\0\u0532\0\151\0\u0555\0\u0578\0\151\0\151\0\u059b"+
+    "\0\151";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[70];
+    int [] result = new int[73];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -125,7 +126,7 @@ public class Lexer {
     "\1\2\1\3\1\4\1\5\1\6\1\2\1\7\1\10"+
     "\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20"+
     "\1\21\1\22\1\23\1\6\1\24\1\25\1\26\1\27"+
-    "\1\30\1\31\1\32\1\6\1\33\1\34\1\6\1\35"+
+    "\1\30\1\31\1\32\1\6\1\33\1\34\1\35\1\6"+
     "\1\36\1\37\1\40\45\0\2\4\43\0\2\6\11\0"+
     "\7\6\2\0\11\6\6\0\2\6\11\0\1\6\1\41"+
     "\5\6\2\0\11\6\6\0\2\6\11\0\3\6\1\42"+
@@ -133,39 +134,41 @@ public class Lexer {
     "\3\6\2\0\11\6\6\0\2\6\11\0\4\6\1\44"+
     "\2\6\2\0\11\6\6\0\2\6\11\0\3\6\1\45"+
     "\3\6\2\0\11\6\6\0\2\6\11\0\7\6\2\0"+
-    "\7\6\1\46\1\6\6\0\2\6\11\0\7\6\2\0"+
-    "\1\6\1\47\7\6\6\0\2\6\11\0\3\6\1\50"+
-    "\3\6\2\0\11\6\6\0\2\6\11\0\1\6\1\51"+
-    "\5\6\2\0\3\6\1\52\5\6\6\0\2\6\11\0"+
-    "\6\6\1\53\2\0\11\6\6\0\2\6\11\0\1\54"+
+    "\10\6\1\46\6\0\2\6\11\0\7\6\2\0\1\6"+
+    "\1\47\7\6\6\0\2\6\11\0\3\6\1\50\3\6"+
+    "\2\0\11\6\6\0\2\6\11\0\1\6\1\51\5\6"+
+    "\2\0\3\6\1\52\5\6\6\0\2\6\11\0\6\6"+
+    "\1\53\2\0\11\6\6\0\2\6\11\0\1\54\3\6"+
+    "\1\55\2\6\2\0\11\6\6\0\2\6\11\0\1\56"+
     "\6\6\2\0\11\6\6\0\2\6\11\0\7\6\2\0"+
-    "\10\6\1\55\6\0\2\6\11\0\4\6\1\56\2\6"+
-    "\2\0\11\6\6\0\2\6\11\0\2\6\1\57\4\6"+
-    "\2\0\11\6\6\0\2\6\11\0\6\6\1\60\2\0"+
-    "\11\6\6\0\2\6\11\0\7\6\2\0\6\6\1\61"+
-    "\2\6\6\0\2\6\11\0\4\6\1\62\2\6\2\0"+
-    "\11\6\6\0\2\6\11\0\4\6\1\63\2\6\2\0"+
-    "\11\6\6\0\2\6\11\0\4\6\1\64\2\6\2\0"+
-    "\11\6\6\0\2\6\11\0\2\6\1\65\4\6\2\0"+
-    "\11\6\6\0\2\6\11\0\7\6\2\0\1\66\3\6"+
-    "\1\67\4\6\6\0\2\6\11\0\1\70\6\6\2\0"+
-    "\11\6\6\0\2\6\11\0\4\6\1\71\2\6\2\0"+
-    "\11\6\6\0\2\6\11\0\7\6\2\0\1\72\10\6"+
-    "\6\0\2\6\11\0\1\6\1\73\5\6\2\0\11\6"+
-    "\6\0\2\6\11\0\1\6\1\74\5\6\2\0\11\6"+
-    "\6\0\2\6\11\0\7\6\2\0\6\6\1\75\2\6"+
-    "\6\0\2\6\11\0\7\6\2\0\1\6\1\76\7\6"+
-    "\6\0\2\6\11\0\7\6\2\0\2\6\1\77\6\6"+
-    "\6\0\2\6\11\0\4\6\1\100\2\6\2\0\11\6"+
-    "\6\0\2\6\11\0\1\6\1\101\5\6\2\0\11\6"+
-    "\6\0\2\6\11\0\1\102\6\6\2\0\11\6\6\0"+
-    "\2\6\11\0\6\6\1\103\2\0\11\6\6\0\2\6"+
-    "\11\0\6\6\1\104\2\0\11\6\6\0\2\6\11\0"+
-    "\4\6\1\105\2\6\2\0\11\6\6\0\2\6\11\0"+
-    "\2\6\1\106\4\6\2\0\11\6\2\0";
+    "\5\6\1\57\3\6\6\0\2\6\11\0\2\6\1\60"+
+    "\4\6\2\0\11\6\6\0\2\6\11\0\6\6\1\61"+
+    "\2\0\11\6\6\0\2\6\11\0\7\6\2\0\7\6"+
+    "\1\62\1\6\6\0\2\6\11\0\4\6\1\63\2\6"+
+    "\2\0\11\6\6\0\2\6\11\0\4\6\1\64\2\6"+
+    "\2\0\11\6\6\0\2\6\11\0\4\6\1\65\2\6"+
+    "\2\0\11\6\6\0\2\6\11\0\2\6\1\66\4\6"+
+    "\2\0\11\6\6\0\2\6\11\0\7\6\2\0\1\67"+
+    "\3\6\1\70\4\6\6\0\2\6\11\0\1\71\6\6"+
+    "\2\0\11\6\6\0\2\6\11\0\7\6\2\0\4\6"+
+    "\1\72\4\6\6\0\2\6\11\0\7\6\2\0\1\73"+
+    "\10\6\6\0\2\6\11\0\4\6\1\74\2\6\2\0"+
+    "\11\6\6\0\2\6\11\0\1\6\1\75\5\6\2\0"+
+    "\11\6\6\0\2\6\11\0\1\6\1\76\5\6\2\0"+
+    "\11\6\6\0\2\6\11\0\7\6\2\0\7\6\1\77"+
+    "\1\6\6\0\2\6\11\0\7\6\2\0\1\6\1\100"+
+    "\7\6\6\0\2\6\11\0\7\6\2\0\2\6\1\101"+
+    "\6\6\6\0\2\6\11\0\4\6\1\102\2\6\2\0"+
+    "\11\6\6\0\2\6\11\0\7\6\2\0\4\6\1\103"+
+    "\4\6\6\0\2\6\11\0\1\6\1\104\5\6\2\0"+
+    "\11\6\6\0\2\6\11\0\1\105\6\6\2\0\11\6"+
+    "\6\0\2\6\11\0\6\6\1\106\2\0\11\6\6\0"+
+    "\2\6\11\0\6\6\1\107\2\0\11\6\6\0\2\6"+
+    "\11\0\4\6\1\110\2\6\2\0\11\6\6\0\2\6"+
+    "\11\0\2\6\1\111\4\6\2\0\11\6\2\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1400];
+    int [] result = new int[1470];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -204,10 +207,10 @@ public class Lexer {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\1\0\2\11\1\1\1\11\1\1\11\11\6\1\2\11"+
-    "\7\1\2\11\46\1";
+    "\7\1\2\11\51\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[70];
+    int [] result = new int[73];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -665,135 +668,139 @@ public class Lexer {
         case 1: 
           { throw new LexerException(yyline, yycolumn);
           }
-        case 34: break;
+        case 35: break;
         case 2: 
           { 
           }
-        case 35: break;
+        case 36: break;
         case 3: 
           { return token(Sym.INT, Integer.parseInt(yytext()));
           }
-        case 36: break;
+        case 37: break;
         case 4: 
           { return token(Sym.VARIABLE, yytext());
           }
-        case 37: break;
+        case 38: break;
         case 5: 
           { return token(Sym.LPAR);
           }
-        case 38: break;
+        case 39: break;
         case 6: 
           { return token(Sym.RPAR);
           }
-        case 39: break;
+        case 40: break;
         case 7: 
           { return token(Sym.PLUS);
           }
-        case 40: break;
+        case 41: break;
         case 8: 
           { return token(Sym.MINUS);
           }
-        case 41: break;
+        case 42: break;
         case 9: 
           { return token(Sym.TIMES);
           }
-        case 42: break;
+        case 43: break;
         case 10: 
           { return token(Sym.DIV);
           }
-        case 43: break;
+        case 44: break;
         case 11: 
           { return token(Sym.EQ);
           }
-        case 44: break;
+        case 45: break;
         case 12: 
           { return token(Sym.INF);
           }
-        case 45: break;
+        case 46: break;
         case 13: 
           { return token(Sym.SUP);
           }
-        case 46: break;
+        case 47: break;
         case 14: 
           { return token(Sym.LBRA);
           }
-        case 47: break;
+        case 48: break;
         case 15: 
           { return token(Sym.RBRA);
           }
-        case 48: break;
+        case 49: break;
         case 16: 
           { return token(Sym.COLON);
           }
-        case 49: break;
+        case 50: break;
         case 17: 
           { return token(Sym.ENDL);
           }
-        case 50: break;
+        case 51: break;
         case 18: 
           { return token(Sym.OR);
           }
-        case 51: break;
+        case 52: break;
         case 19: 
           { return token(Sym.IF);
           }
-        case 52: break;
+        case 53: break;
         case 20: 
           { return token(Sym.UP);
           }
-        case 53: break;
+        case 54: break;
         case 21: 
           { return token(Sym.AND);
           }
-        case 54: break;
+        case 55: break;
         case 22: 
           { return token(Sym.NOT);
           }
-        case 55: break;
+        case 56: break;
         case 23: 
           { return token(Sym.XOR);
           }
-        case 56: break;
+        case 57: break;
         case 24: 
           { return token(Sym.FOR);
           }
-        case 57: break;
+        case 58: break;
         case 25: 
           { return token(Sym.END);
           }
-        case 58: break;
+        case 59: break;
         case 26: 
           { return token(Sym.VAR);
           }
-        case 59: break;
+        case 60: break;
         case 27: 
           { return token(Sym.DOWN);
           }
-        case 60: break;
+        case 61: break;
         case 28: 
           { return token(Sym.TURN);
           }
-        case 61: break;
+        case 62: break;
         case 29: 
           { return token(Sym.ELIF);
           }
-        case 62: break;
+        case 63: break;
         case 30: 
           { return token(Sym.ELSE);
           }
-        case 63: break;
-        case 31: 
-          { return token(Sym.START);
-          }
         case 64: break;
-        case 32: 
-          { return token(Sym.PRINT);
+        case 31: 
+          { return token(Sym.PASS);
           }
         case 65: break;
-        case 33: 
-          { return token(Sym.FORWARD);
+        case 32: 
+          { return token(Sym.START);
           }
         case 66: break;
+        case 33: 
+          { return token(Sym.PRINT);
+          }
+        case 67: break;
+        case 34: 
+          { return token(Sym.FORWARD);
+          }
+        case 68: break;
         default: 
           if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
             zzAtEOF = true;
@@ -801,7 +808,7 @@ public class Lexer {
             case YYINITIAL: {
               return token(Sym.EOF);
             }
-            case 71: break;
+            case 74: break;
             default:
             return null;
             }

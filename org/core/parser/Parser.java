@@ -22,6 +22,7 @@ import org.core.syntax.instructions.For;
 import org.core.syntax.instructions.Forward;
 import org.core.syntax.instructions.If;
 import org.core.syntax.instructions.LinkedInst;
+import org.core.syntax.instructions.Pass;
 import org.core.syntax.instructions.Print;
 import org.core.syntax.instructions.Program;
 import org.core.syntax.instructions.Turn;
@@ -70,6 +71,11 @@ public class Parser {
 	}
 
 	private Instruction inst() throws Exception {
+		if (reader.check(Sym.PASS)) {
+			reader.eat(Sym.PASS);
+			reader.eat(Sym.ENDL);
+			return new Pass();
+		}
 		if (reader.check(Sym.PRINT)) {
     		reader.eat(Sym.PRINT);
     		Instruction instr =  new Print(expression());
@@ -149,6 +155,8 @@ public class Parser {
 			reader.eat(Sym.ENDL);
 			return instr;
 		}
+		if (reader.check(Sym.RBRA))
+			throw new Exception(reader.getPosition() + "\nEmpty core instructions, use 'pass'");
 		throw new Exception("Cannot reduce inst");
 	}
 	
@@ -157,7 +165,7 @@ public class Parser {
 				reader.check(Sym.FORWARD) || reader.check(Sym.TURN) || 
 				reader.check(Sym.PRINT) || reader.check(Sym.IF) ||
 				reader.check(Sym.ELIF) || reader.check(Sym.ELSE) ||
-				reader.check(Sym.FOR) ||
+				reader.check(Sym.FOR) || reader.check(Sym.PASS) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());
 		return null;

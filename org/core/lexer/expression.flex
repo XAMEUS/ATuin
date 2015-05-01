@@ -59,6 +59,7 @@ variable = [a-z][a-zA-Z]*
 	"elif" {return token(Sym.ELIF);}
 	"else" {return token(Sym.ELSE);}
 	"for" {return token(Sym.FOR);}
+	"pass" {return token(Sym.PASS);}
 	
 	"var" {return token(Sym.VAR);}
 	"forward" {return token(Sym.FORWARD);}

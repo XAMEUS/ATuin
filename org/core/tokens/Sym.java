@@ -35,6 +35,7 @@ public enum Sym {
     ELIF,
     ELSE,
     FOR,
+    PASS,
     
     FORWARD,
     TURN,
