@@ -66,6 +66,14 @@ public class Number {
 		return this.n.doubleValue() > num.n.doubleValue();
 	}
 	
+	public int intValue() {
+		return this.n.intValue();
+	}
+	
+	public int doubleValue() {
+		return this.n.intValue();
+	}
+	
 	public boolean equals(Object obj) {
 		return this.n == ((Number)obj).n;
 	};
