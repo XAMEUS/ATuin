@@ -18,6 +18,7 @@ import org.core.syntax.expressions.Xor;
 import org.core.syntax.instructions.Assign;
 import org.core.syntax.instructions.Decl;
 import org.core.syntax.instructions.Down;
+import org.core.syntax.instructions.For;
 import org.core.syntax.instructions.Forward;
 import org.core.syntax.instructions.If;
 import org.core.syntax.instructions.LinkedInst;
@@ -99,6 +100,14 @@ public class Parser {
     		}
     		return c;
     	}
+		if (reader.check(Sym.FOR)) {
+			reader.eat(Sym.FOR);
+			Expression exp = expression();
+			reader.eat(Sym.LBRA);
+			Instruction instr = inst();
+			reader.eat(Sym.RBRA);
+			return new For(exp, instr);
+		}
 		if (reader.check(Sym.VARIABLE)) {
 			String s = reader.getStringValue();
     		reader.eat(Sym.VARIABLE);
@@ -148,6 +157,7 @@ public class Parser {
 				reader.check(Sym.FORWARD) || reader.check(Sym.TURN) || 
 				reader.check(Sym.PRINT) || reader.check(Sym.IF) ||
 				reader.check(Sym.ELIF) || reader.check(Sym.ELSE) ||
+				reader.check(Sym.FOR) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());
 		return null;
