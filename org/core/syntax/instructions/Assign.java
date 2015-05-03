@@ -1,6 +1,6 @@
 package org.core.syntax.instructions;
 
-import org.core.env.ValueEnvionment;
+import org.core.env.Envionment;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 
@@ -16,7 +16,7 @@ public class Assign extends Instruction {
 	
 	@Override
 	public void exec() throws Exception {
-		ValueEnvionment.setValue(this.name, this.expression.eval());
+		Envionment.setValue(this.name, this.expression.eval());
 	}
 
 }
