@@ -1,5 +1,5 @@
 package org.core.syntax;
 
-public abstract class Instruction {
-	public abstract void exec() throws Exception;
+public interface Instruction {
+	public void exec() throws Exception;
 }
