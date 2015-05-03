@@ -3,7 +3,7 @@ package org.core.syntax.instructions;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 
-public class Turn extends Instruction {
+public class Turn implements Instruction {
 	
 	private Expression exp;
 	

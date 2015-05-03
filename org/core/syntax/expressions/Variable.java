@@ -4,7 +4,7 @@ import org.core.env.Envionment;
 import org.core.env.Number;
 import org.core.syntax.Expression;
 
-public class Variable extends Expression {
+public class Variable implements Expression {
 	
 	private String name;
 	

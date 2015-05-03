@@ -3,7 +3,7 @@ package org.core.syntax.expressions;
 import org.core.env.Number;
 import org.core.syntax.Expression;
 
-public class Int extends Expression {
+public class Int implements Expression {
 	
 	private Number value;
 	

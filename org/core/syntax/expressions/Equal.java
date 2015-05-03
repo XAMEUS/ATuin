@@ -4,7 +4,7 @@ import org.core.env.Number;
 import org.core.env.Values;
 import org.core.syntax.Expression;
 
-public class Equal extends Expression {
+public class Equal implements Expression {
 
 	private Expression left, right;
 	

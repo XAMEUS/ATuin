@@ -3,7 +3,7 @@ package org.core.syntax.expressions;
 import org.core.env.Number;
 import org.core.syntax.Expression;
 
-public class Product extends Expression {
+public class Product implements Expression {
 	
 	private Expression left, right;
 	

@@ -4,7 +4,7 @@ import org.core.env.Values;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 
-public class Elif extends Instruction {
+public class Elif implements Instruction {
 	
 	private Expression expression;
 	private Instruction inst;

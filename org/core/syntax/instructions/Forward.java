@@ -3,7 +3,7 @@ package org.core.syntax.instructions;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 
-public class Forward extends Instruction {
+public class Forward implements Instruction {
 	
 	private Expression exp;
 	

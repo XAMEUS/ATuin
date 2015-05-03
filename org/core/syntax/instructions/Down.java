@@ -2,7 +2,7 @@ package org.core.syntax.instructions;
 
 import org.core.syntax.Instruction;
 
-public class Down extends Instruction {
+public class Down implements Instruction {
 
 	@Override
 	public void exec() throws Exception {

@@ -4,7 +4,7 @@ import org.core.env.Number;
 import org.core.env.Values;
 import org.core.syntax.Expression;
 
-public class Not extends Expression {
+public class Not implements Expression {
 	
 	private Expression expression;
 	

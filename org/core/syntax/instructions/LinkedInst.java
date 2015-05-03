@@ -2,7 +2,7 @@ package org.core.syntax.instructions;
 
 import org.core.syntax.Instruction;
 
-public class LinkedInst extends Instruction {
+public class LinkedInst implements Instruction {
 
 	private Instruction current;
 	private LinkedInst next;

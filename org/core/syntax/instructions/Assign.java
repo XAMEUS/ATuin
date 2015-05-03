@@ -4,7 +4,7 @@ import org.core.env.Envionment;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 
-public class Assign extends Instruction {
+public class Assign implements Instruction {
 	
 	private String name;
 	private Expression expression;

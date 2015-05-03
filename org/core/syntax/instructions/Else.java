@@ -2,7 +2,7 @@ package org.core.syntax.instructions;
 
 import org.core.syntax.Instruction;
 
-public class Else extends Instruction {
+public class Else implements Instruction {
 	
 	private Instruction inst;
 	

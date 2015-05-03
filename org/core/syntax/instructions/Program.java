@@ -2,7 +2,7 @@ package org.core.syntax.instructions;
 
 import org.core.syntax.Instruction;
 
-public class Program extends Instruction {
+public class Program implements Instruction {
 	
 	private Decl decl;
 	private Instruction inst;

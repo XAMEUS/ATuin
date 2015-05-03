@@ -3,7 +3,7 @@ package org.core.syntax.expressions;
 import org.core.env.Number;
 import org.core.syntax.Expression;
 
-public class Division extends Expression {
+public class Division implements Expression {
 
 	private Expression left, right;
 

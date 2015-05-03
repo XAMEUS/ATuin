@@ -4,7 +4,7 @@ import org.core.env.Values;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 
-public class If extends Instruction {
+public class If implements Instruction {
 	
 	private Expression expression;
 	private Instruction inst;

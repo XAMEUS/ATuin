@@ -5,7 +5,7 @@ import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
 import org.ui.controller.Controller;
 
-public class Print extends Instruction {
+public class Print implements Instruction {
 	
 	private Expression expression;
 	

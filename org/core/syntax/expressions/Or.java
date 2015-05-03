@@ -4,7 +4,7 @@ import org.core.env.Number;
 import org.core.env.Values;
 import org.core.syntax.Expression;
 
-public class Or extends Expression {
+public class Or implements Expression {
 
 	private Expression left, right;
 	

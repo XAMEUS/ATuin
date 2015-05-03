@@ -4,7 +4,7 @@ import org.core.env.Number;
 import org.core.env.Values;
 import org.core.syntax.Expression;
 
-public class Inf extends Expression {
+public class Inf implements Expression {
 
 	private Expression left, right;
 	private boolean strict;

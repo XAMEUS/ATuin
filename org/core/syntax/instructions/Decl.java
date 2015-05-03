@@ -4,7 +4,7 @@ import org.core.env.Envionment;
 import org.core.env.Number;
 import org.core.syntax.Instruction;
 
-public class Decl extends Instruction {
+public class Decl implements Instruction {
 	
 	private String name;
 	private Decl next;

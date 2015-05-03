@@ -6,7 +6,7 @@ import org.core.env.Envionment;
 import org.core.syntax.Instruction;
 import org.core.syntax.expressions.Variable;
 
-public class Function extends Instruction {
+public class Function implements Instruction {
 	
 	private String name;
 	private ArrayList<Variable> args = new ArrayList<Variable>();
