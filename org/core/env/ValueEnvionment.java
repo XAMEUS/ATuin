@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public class ValueEnvionment {
 	
-	private static HashMap<String, Number> map = new HashMap<String, Number>();
+	private HashMap<String, Number> map = new HashMap<String, Number>(256);
 	
-	public static void setValue(String name, Number value) {
-		ValueEnvionment.map.put(name, value);
+	public void setValue(String name, Number value) {
+		this.map.put(name, value);
 	}
 	
-	public static Number getValue(String name) {
-		return ValueEnvionment.map.get(name);
+	public Number getValue(String name) {
+		return this.map.get(name);
 	}
 }
