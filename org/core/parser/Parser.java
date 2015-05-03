@@ -1,5 +1,6 @@
 package org.core.parser;
 
+import org.core.env.Envionment;
 import org.core.env.Number;
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
@@ -20,6 +21,7 @@ import org.core.syntax.instructions.Decl;
 import org.core.syntax.instructions.Down;
 import org.core.syntax.instructions.For;
 import org.core.syntax.instructions.Forward;
+import org.core.syntax.instructions.Function;
 import org.core.syntax.instructions.If;
 import org.core.syntax.instructions.LinkedInst;
 import org.core.syntax.instructions.Pass;
@@ -54,6 +56,7 @@ public class Parser {
 	}
 	
 	public Program build() throws Exception {
+		Envionment.setEnvionment("main");
 		Program prog = new Program(decl(), inst());
 		reader.eat(Sym.EOF);
 		return prog;
@@ -114,6 +117,31 @@ public class Parser {
 			reader.eat(Sym.RBRA);
 			return new For(exp, instr);
 		}
+		if (reader.check(Sym.DEF)) {
+			reader.eat(Sym.DEF);
+			String fname = reader.getStringValue();
+			String last = Envionment.getEnvionment();
+			Envionment.setEnvionment(fname);
+			reader.eat(Sym.VARIABLE);
+			Function f = new Function(fname);
+			reader.eat(Sym.LPAR);
+			if (reader.check(Sym.VARIABLE)) {
+				do {
+					String arg = reader.getStringValue();
+					reader.eat(Sym.VARIABLE);
+					f.addArg(new Variable(arg));
+					if (reader.check(Sym.COMMA))
+						reader.eat(Sym.COMMA);
+				} while (reader.check(Sym.VARIABLE));
+			}
+			reader.eat(Sym.RPAR);
+			reader.eat(Sym.LBRA);
+			Instruction instr = inst();
+			f.setInstr(instr);
+			reader.eat(Sym.RBRA);
+			Envionment.setEnvionment(last);
+			return f;
+		}
 		if (reader.check(Sym.VARIABLE)) {
 			String s = reader.getStringValue();
     		reader.eat(Sym.VARIABLE);
@@ -166,6 +194,7 @@ public class Parser {
 				reader.check(Sym.PRINT) || reader.check(Sym.IF) ||
 				reader.check(Sym.ELIF) || reader.check(Sym.ELSE) ||
 				reader.check(Sym.FOR) || reader.check(Sym.PASS) ||
+				reader.check(Sym.DEF) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());
 		return null;
