@@ -1,5 +1,7 @@
 package org.core.parser;
 
+import java.util.ArrayList;
+
 import org.core.env.Envionment;
 import org.core.env.Number;
 import org.core.syntax.Expression;
@@ -17,6 +19,7 @@ import org.core.syntax.expressions.Sum;
 import org.core.syntax.expressions.Variable;
 import org.core.syntax.expressions.Xor;
 import org.core.syntax.instructions.Assign;
+import org.core.syntax.instructions.Call;
 import org.core.syntax.instructions.Decl;
 import org.core.syntax.instructions.Down;
 import org.core.syntax.instructions.For;
@@ -126,28 +129,59 @@ public class Parser {
 			Function f = new Function(fname);
 			reader.eat(Sym.LPAR);
 			if (reader.check(Sym.VARIABLE)) {
+				ArrayList<String> args = new ArrayList<String>();
 				do {
 					String arg = reader.getStringValue();
 					reader.eat(Sym.VARIABLE);
-					f.addArg(new Variable(arg));
+					args.add(arg);
 					if (reader.check(Sym.COMMA))
 						reader.eat(Sym.COMMA);
 				} while (reader.check(Sym.VARIABLE));
+				String[] aargs = new String[args.size()];
+				for (int i = 0; i < aargs.length; i++)
+					aargs[i] = args.get(i);
+				f.setArgs(aargs);
 			}
 			reader.eat(Sym.RPAR);
 			reader.eat(Sym.LBRA);
 			Instruction instr = inst();
 			f.setInstr(instr);
+			if (reader.check(Sym.RETURN)) {
+				reader.eat(Sym.RETURN);
+				Expression exp = expression();
+				f.setReturn(exp);
+				reader.eat(Sym.ENDL);
+			}
 			reader.eat(Sym.RBRA);
 			Envionment.setEnvionment(last);
-			return f;
+			f.exec();
+		}
+		if (reader.check(Sym.CALL)) {
+			reader.eat(Sym.CALL);
+			String fname = reader.getStringValue();
+			reader.eat(Sym.VARIABLE);
+			reader.eat(Sym.LPAR);
+			Function f = Envionment.getFunction(fname);
+			System.out.println(f);
+			Expression[] args = new Expression[f.getArgs().length];
+			for (int i = 0; i < args.length-1; i++) {
+				args[i] = expression();
+				reader.eat(Sym.COMMA);
+			}
+			if (args.length != 0)
+				args[args.length-1] = expression();
+			reader.eat(Sym.RPAR);
+			Call call = new Call(fname);
+			call.setArgs(args);
+			reader.eat(Sym.ENDL);
+			return call;
 		}
 		if (reader.check(Sym.VARIABLE)) {
-			String s = reader.getStringValue();
+			String vname = reader.getStringValue();
     		reader.eat(Sym.VARIABLE);
     		reader.eat(Sym.COLON);
     		reader.eat(Sym.EQ);
-    		Instruction instr = new Assign(s, expression());
+    		Instruction instr = new Assign(vname, expression());
     		reader.eat(Sym.ENDL);
     		return instr;
 		}
@@ -194,7 +228,7 @@ public class Parser {
 				reader.check(Sym.PRINT) || reader.check(Sym.IF) ||
 				reader.check(Sym.ELIF) || reader.check(Sym.ELSE) ||
 				reader.check(Sym.FOR) || reader.check(Sym.PASS) ||
-				reader.check(Sym.DEF) ||
+				reader.check(Sym.DEF) || reader.check(Sym.CALL) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());
 		return null;
@@ -207,8 +241,28 @@ public class Parser {
 			return expFollow(exp);
 		}
 		else if (reader.check(Sym.VARIABLE)) {
-			Expression exp = new Variable(reader.getStringValue());
+			String s = reader.getStringValue();
 			reader.eat(Sym.VARIABLE);
+			Expression exp = null;
+			if (reader.check(Sym.LPAR)) {
+				reader.eat(Sym.LPAR);
+				Call call = new Call(s);
+				Function f = Envionment.getFunction(s);
+				System.out.println(f);
+				Expression[] args = new Expression[f.getArgs().length];
+				for (int i = 0; i < args.length-1; i++) {
+					args[i] = expression();
+					reader.eat(Sym.COMMA);
+				}
+				if (args.length != 0)
+					args[args.length-1] = expression();
+				call.setArgs(args);
+				exp = call;
+				reader.eat(Sym.RPAR);
+			}
+			else {
+				exp = new Variable(s);
+			}
 			return expFollow(exp);
 		}
 		else if (reader.check(Sym.NOT)) {
