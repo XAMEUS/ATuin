@@ -30,7 +30,7 @@ public class Elif implements Instruction {
 		if (this.expression.eval() == Values.TRUE.getValue()) {
 			this.inst.exec();
 		}
-		else {
+		else if (this.next != null) {
 			this.next.exec();
 		}
 	}
