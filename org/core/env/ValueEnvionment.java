@@ -13,4 +13,8 @@ public class ValueEnvionment {
 	public Number getValue(String name) {
 		return this.map.get(name);
 	}
+
+	public void clean() {
+		this.map.clear();
+	}
 }

@@ -35,5 +35,9 @@ public class Envionment {
 	public static void setValue(String name, Number value) {
 		Envionment.map0.get(Envionment.status).setValue(name, value);
 	}
+
+	public static void cleanEnvionment() {
+		Envionment.map0.get(Envionment.status).clean();
+	}
 	
 }
