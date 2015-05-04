@@ -16,6 +16,7 @@ import org.core.syntax.expressions.Not;
 import org.core.syntax.expressions.Or;
 import org.core.syntax.expressions.Product;
 import org.core.syntax.expressions.Sum;
+import org.core.syntax.expressions.Sup;
 import org.core.syntax.expressions.Variable;
 import org.core.syntax.expressions.Xor;
 import org.core.syntax.instructions.Assign;
@@ -51,7 +52,7 @@ public class Parser {
 	 * id -> [a-z][a-zA-Z0-9]*
 	 * int -> [1-9][0-9]* | 0
 	 */
-	
+
 	protected LookAhead1 reader;
 	
 	public Parser(LookAhead1 r) {
@@ -142,6 +143,7 @@ public class Parser {
 					aargs[i] = args.get(i);
 				f.setArgs(aargs);
 			}
+			Envionment.addFunction(f);
 			reader.eat(Sym.RPAR);
 			reader.eat(Sym.LBRA);
 			Instruction instr = inst();
@@ -154,7 +156,7 @@ public class Parser {
 			}
 			reader.eat(Sym.RBRA);
 			Envionment.setEnvionment(last);
-			f.exec();
+			return f;
 		}
 		if (reader.check(Sym.CALL)) {
 			reader.eat(Sym.CALL);
@@ -162,8 +164,8 @@ public class Parser {
 			reader.eat(Sym.VARIABLE);
 			reader.eat(Sym.LPAR);
 			Function f = Envionment.getFunction(fname);
-			System.out.println(f);
-			Expression[] args = new Expression[f.getArgs().length];
+			int size = (f.getArgs() == null)? 0:f.getArgs().length;
+			Expression[] args = new Expression[size];
 			for (int i = 0; i < args.length-1; i++) {
 				args[i] = expression();
 				reader.eat(Sym.COMMA);
@@ -248,8 +250,8 @@ public class Parser {
 				reader.eat(Sym.LPAR);
 				Call call = new Call(s);
 				Function f = Envionment.getFunction(s);
-				System.out.println(f);
-				Expression[] args = new Expression[f.getArgs().length];
+				int size = (f.getArgs() == null)? 0:f.getArgs().length;
+				Expression[] args = new Expression[size];
 				for (int i = 0; i < args.length-1; i++) {
 					args[i] = expression();
 					reader.eat(Sym.COMMA);
@@ -338,7 +340,7 @@ public class Parser {
 				strict = false;
 			}
 			Expression right = expression();
-			return new Inf(left, right, strict);
+			return new Sup(left, right, strict);
 		}
 		return left;
 	}

@@ -40,7 +40,7 @@ public class Function implements Instruction, Expression, Method {
 	
 	@Override
 	public void exec() throws Exception {
-		Envionment.addFunction(this);
+		//Envionment.addFunction(this);
 	}
 	
 	@Override
@@ -50,10 +50,12 @@ public class Function implements Instruction, Expression, Method {
 
 	@Override
 	public void call(Number[] args) throws Exception {
-		if (args.length != this.args.length)
-			throw new Exception("Incorrects arguments...");
-		for (int i = 0; i < this.args.length; i++) {
-			Envionment.setValue(this.args[i], args[i]);
+		if (this.args != null) {
+			if (args.length != this.args.length)
+				throw new Exception("Incorrects arguments...");
+			for (int i = 0; i < this.args.length; i++) {
+				Envionment.setValue(this.args[i], args[i]);
+			}
 		}
 		this.instr.exec();
 	}
