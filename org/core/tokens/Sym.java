@@ -38,6 +38,7 @@ public enum Sym {
     PASS,
     DEF,
     CALL,
+    RETURN,
     
     FORWARD,
     TURN,

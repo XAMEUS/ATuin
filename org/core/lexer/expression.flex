@@ -62,6 +62,7 @@ variable = [a-z][a-zA-Z]*
 	"pass" {return token(Sym.PASS);}
 	"def" {return token(Sym.DEF);}
 	"call" {return token(Sym.CALL);}
+	"return" {return token(Sym.RETURN);}
 	
 	"var" {return token(Sym.VAR);}
 	"forward" {return token(Sym.FORWARD);}
