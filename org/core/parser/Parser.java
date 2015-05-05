@@ -17,6 +17,7 @@ import org.core.syntax.expressions.Or;
 import org.core.syntax.expressions.Product;
 import org.core.syntax.expressions.Sum;
 import org.core.syntax.expressions.Sup;
+import org.core.syntax.expressions.ToInt;
 import org.core.syntax.expressions.Variable;
 import org.core.syntax.expressions.Xor;
 import org.core.syntax.instructions.Assign;
@@ -271,6 +272,13 @@ public class Parser {
 			reader.eat(Sym.NOT);
 			Expression exp = expression();
 			return new Not(exp);
+		}
+		else if (reader.check(Sym.TOINT)) {
+			reader.eat(Sym.TOINT);
+			reader.eat(Sym.LPAR);
+			Expression exp = expression();
+			reader.eat(Sym.RPAR);
+			return new ToInt(exp);
 		}
 		else {
 			reader.eat(Sym.LPAR);
