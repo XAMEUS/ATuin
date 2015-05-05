@@ -34,6 +34,7 @@ import org.core.syntax.instructions.Print;
 import org.core.syntax.instructions.Program;
 import org.core.syntax.instructions.Turn;
 import org.core.syntax.instructions.Up;
+import org.core.syntax.instructions.While;
 import org.core.tokens.Sym;
 
 public class Parser {
@@ -121,6 +122,14 @@ public class Parser {
 			Instruction instr = inst();
 			reader.eat(Sym.RBRA);
 			return new For(exp, instr);
+		}
+		if (reader.check(Sym.WHILE)) {
+			reader.eat(Sym.WHILE);
+			Expression exp = expression();
+			reader.eat(Sym.LBRA);
+			Instruction instr = inst();
+			reader.eat(Sym.RBRA);
+			return new While(exp, instr);
 		}
 		if (reader.check(Sym.DEF)) {
 			reader.eat(Sym.DEF);
@@ -230,7 +239,8 @@ public class Parser {
 				reader.check(Sym.FORWARD) || reader.check(Sym.TURN) || 
 				reader.check(Sym.PRINT) || reader.check(Sym.IF) ||
 				reader.check(Sym.ELIF) || reader.check(Sym.ELSE) ||
-				reader.check(Sym.FOR) || reader.check(Sym.PASS) ||
+				reader.check(Sym.FOR) || reader.check(Sym.WHILE) ||
+				reader.check(Sym.PASS) ||
 				reader.check(Sym.DEF) || reader.check(Sym.CALL) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());
