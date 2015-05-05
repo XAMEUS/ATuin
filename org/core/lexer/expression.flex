@@ -60,6 +60,7 @@ variable = [a-z][a-zA-Z]*
 	"elif" {return token(Sym.ELIF);}
 	"else" {return token(Sym.ELSE);}
 	"for" {return token(Sym.FOR);}
+	"while" {return token(Sym.WHILE);}
 	"pass" {return token(Sym.PASS);}
 	"def" {return token(Sym.DEF);}
 	"call" {return token(Sym.CALL);}
