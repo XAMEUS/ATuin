@@ -14,7 +14,8 @@ public class Program implements Instruction {
 	
 	@Override
 	public void exec() throws Exception {
-		this.decl.exec();
+		if (this.decl != null)
+			this.decl.exec();
 		this.inst.exec();
 	}
 
