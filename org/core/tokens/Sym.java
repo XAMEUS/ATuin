@@ -39,6 +39,7 @@ public enum Sym {
     DEF,
     CALL,
     RETURN,
+    TOINT,
     
     FORWARD,
     TURN,
