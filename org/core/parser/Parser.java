@@ -12,6 +12,7 @@ import org.core.syntax.expressions.Division;
 import org.core.syntax.expressions.Equal;
 import org.core.syntax.expressions.Inf;
 import org.core.syntax.expressions.Int;
+import org.core.syntax.expressions.Modulo;
 import org.core.syntax.expressions.Not;
 import org.core.syntax.expressions.Or;
 import org.core.syntax.expressions.Product;
@@ -53,6 +54,39 @@ public class Parser {
 	 * 
 	 * id -> [a-z][a-zA-Z0-9]*
 	 * int -> [1-9][0-9]* | 0
+	 */
+	
+	/*
+	  S -> DECL INST $
+	  DECL -> var STRING ; Decl | e     (inutile)
+	  INST -> STRING := EXP ; |
+	  		   forward EXP ; |
+	  		   turn EXP ; |
+	  		   start BLOCINST end |
+	  		   up ; | down ;
+	  		   def FUNCTION |
+	  		   call STRING ( ARGSCALL ) ; |
+	  		   pass ; | while EXP { INST } |
+	  		   for EXP { INST } |
+	  		   IF
+	  IF -> if ( EXP ) { INST } ELIF ;
+	  ELIF -> elif ( EXP ) { INST } ELIF | ELSE
+	  ELSE -> else { INST } | e
+	  FUNCTION -> ID { INSTR RETURN }
+	  RETURN -> return ID ; | e
+	  BLOCINST -> INST ; BLOCINST | e
+	  EXP -> INT EXPSUITE | ID EXPSUITE | (EXP) EXPSUITE
+	  EXPSUITE -> + EXP | - EXP | * EXP | / EXP | e
+	  				| and EXP | or EXP | xor EXP | = EXP
+	  				| <EQ EXP | >EQ EXP;
+	  EQ -> = | e
+	  ID -> STRING | STRING ( ARGSDEF ) | STRING ( ARGSCALL )
+	  IDNEXT -> ID | ID , IDNEXT;
+	  EXPNEXT -> EXP | EXP , EXPNEXT;
+	  ARGSDEF ->  EXP EXPNEXT | e
+	  ARGSCALL -> ID IDNEXT | e
+	  STRING -> [a-z][a-zA-Z0-9]*
+	  INT -> [1-9][0-9]* | 0
 	 */
 
 	protected LookAhead1 reader;
@@ -319,6 +353,11 @@ public class Parser {
 			reader.eat(Sym.DIV);
 			Expression right = expression();
 			return new Division(left, right);
+		}
+		if (reader.check(Sym.MODULO)) {
+			reader.eat(Sym.MODULO);
+			Expression right = expression();
+			return new Modulo(left, right);
 		}
 		if (reader.check(Sym.AND)) {
 			reader.eat(Sym.AND);

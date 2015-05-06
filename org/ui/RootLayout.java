@@ -11,7 +11,6 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import org.ui.canvas.GDrawingFX;
-import org.ui.canvas.ResizableCanvas;
 import org.ui.console.GConsoleFX;
 import org.ui.controller.Controller;
 import org.ui.doc.GDocView;
@@ -63,7 +62,8 @@ public class RootLayout extends BorderPane {
 		TabPaneWrapper wrap = new TabPaneWrapper(Orientation.HORIZONTAL, .4);
 		
 		StackPane sp = new StackPane();
-		ResizableCanvas canvas = new GDrawingFX();
+		GDrawingFX canvas = new GDrawingFX();
+		Controller.drawing = canvas;
 		sp.getChildren().add(canvas);
 		
 		wrap.addNodes(wrapper.getNode(), sp);

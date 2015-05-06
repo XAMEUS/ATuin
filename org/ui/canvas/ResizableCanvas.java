@@ -1,5 +1,7 @@
 package org.ui.canvas;
 
+import org.ui.controller.Controller;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 

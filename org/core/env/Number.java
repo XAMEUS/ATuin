@@ -44,6 +44,13 @@ public class Number {
 		return N;
 	}
 	
+	public Number modulo(Number num) {
+		Number N = new Number();
+		N.n = this.n.doubleValue() % num.n.doubleValue();
+		N.check();
+		return N;
+	}
+	
 	public Number divide(Number num) {
 		Number N = new Number();
 		N.n = this.n.doubleValue() / num.n.doubleValue();

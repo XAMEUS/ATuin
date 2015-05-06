@@ -16,6 +16,7 @@ import org.core.parser.LookAhead1;
 import org.core.parser.Parser;
 import org.core.syntax.Instruction;
 import org.core.syntax.instructions.Program;
+import org.ui.canvas.GDrawingFX;
 import org.ui.console.GConsoleFX;
 import org.ui.dialogs.Dialogs;
 import org.ui.editor.GEditorFX;
@@ -24,6 +25,8 @@ public class Controller {
 	
 	public static GConsoleFX out;
 	public static Stage primaryStage;
+	public static GDrawingFX drawing;
+	private static Instruction last_instruction;
 	
 	public static Program build(GEditorFX gefx) {
 
@@ -109,9 +112,28 @@ public class Controller {
 		
 		if (inst != null) {
 			try {
+				TurtleBrain.newTurtle();
+				drawing.draw();
 				inst.exec();
 				System.out.println("Executed...");
 				out.println("Executed...");
+			} catch (Exception e) {
+				out.println(e.getMessage());
+	    		Dialogs.showErrorMessage(primaryStage, "Execution error.", e.getMessage());
+				e.printStackTrace();
+			}
+		}
+		
+		Controller.last_instruction = inst;
+		
+	}
+	
+	public static void recall() {
+		
+		if (Controller.last_instruction != null) {
+			try {
+				TurtleBrain.newTurtle();
+				Controller.last_instruction.exec();
 			} catch (Exception e) {
 				out.println(e.getMessage());
 	    		Dialogs.showErrorMessage(primaryStage, "Execution error.", e.getMessage());

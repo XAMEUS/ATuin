@@ -2,6 +2,7 @@ package org.core.syntax.instructions;
 
 import org.core.syntax.Expression;
 import org.core.syntax.Instruction;
+import org.ui.controller.TurtleBrain;
 
 public class Forward implements Instruction {
 	
@@ -13,7 +14,7 @@ public class Forward implements Instruction {
 	
 	@Override
 	public void exec() throws Exception {
-		// TODO Auto-generated method stub
+		TurtleBrain.move(exp.eval());
 	}
 
 }

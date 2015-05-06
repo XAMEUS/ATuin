@@ -42,6 +42,7 @@ variable = [a-z][a-zA-Z]*
 	"-" {return token(Sym.MINUS);}
 	"*" {return token(Sym.TIMES);}
 	"/" {return token(Sym.DIV);}
+	"%" {return token(Sym.MODULO);}
 	"int" {return token(Sym.TOINT);}
 	
 	"=" {return token(Sym.EQ);}

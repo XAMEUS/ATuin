@@ -23,6 +23,7 @@ public enum Sym {
     MINUS,
     TIMES,
     DIV,
+    MODULO,
     
     NOT,
     AND,
