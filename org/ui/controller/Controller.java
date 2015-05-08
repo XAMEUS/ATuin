@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 
 import javafx.stage.Stage;
 
+import org.core.env.Envionment;
 import org.core.lexer.Lexer;
 import org.core.parser.LookAhead1;
 import org.core.parser.Parser;
@@ -29,7 +30,6 @@ public class Controller {
 	private static Instruction last_instruction;
 	
 	public static Program build(GEditorFX gefx) {
-
 
 		try {
 			PrintWriter writer = new PrintWriter("src.txt", "UTF-8");
@@ -107,13 +107,14 @@ public class Controller {
 	}
 	
 	public static void run(GEditorFX gefx) {
-		
+
+		Envionment.cleanAll();
+		TurtleBrain.newTurtle();
 		Instruction inst = build(gefx);
 		
 		if (inst != null) {
 			try {
-				TurtleBrain.newTurtle();
-				drawing.draw();
+				drawing.clear();
 				inst.exec();
 				System.out.println("Executed...");
 				out.println("Executed...");
