@@ -50,10 +50,10 @@ public class RootLayout extends BorderPane {
 		m.getMenus().add(new Menu("aze"));
 		this.setTop(menubar);
 		
-		TabPaneWrapper wrapper = new TabPaneWrapper(Orientation.VERTICAL, .8);
+		TabPaneWrapper wrapper = new TabPaneWrapper(Orientation.VERTICAL, .9);
 		
 		TabPane bottom = new TabPane();
-		bottom.getStyleClass().add("pane");
+		//bottom.getStyleClass().add("pane");
 		bottom.getTabs().add(Controller.out);
 		bottom.getTabs().add(new GDocView());
 

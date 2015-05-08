@@ -20,7 +20,7 @@ public class Main extends Application {
 		this.primarySage = primaryStage;
 		this.primarySage.setTitle("A'Tuin");
 		this.primarySage.getIcons().add(new Image(Img.class.getResource("logo4.png").toString()));
-		this.primarySage.setWidth(820);
+		this.primarySage.setWidth(850);
 		this.primarySage.setHeight(600);
 		//this.primarySage.initStyle(StageStyle.TRANSPARENT);
 		Controller.primaryStage = primaryStage;

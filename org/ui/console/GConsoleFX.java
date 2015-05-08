@@ -19,18 +19,21 @@ public class GConsoleFX extends Tab {
 		this.setClosable(false);
 		textArea.setFont(Font.loadFont(Fonts.class.getResource("LiberationMono-Regular.ttf").toString(), 12));
 		textArea.getStyleClass().add("console");
+		textArea.setEditable(false);
 		BorderPane bp = new BorderPane();
 		bp.getStyleClass().add("pane");
 		bp.setCenter(textArea);
 		this.setContent(bp);
 		
 		textArea.textProperty().addListener(new ChangeListener<Object>() {
-		    @Override
-		    public void changed(ObservableValue<?> observable, Object oldValue,
-		            Object newValue) {
-		        textArea.setScrollTop(Double.MAX_VALUE);
-		    }
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldValue,
+					Object newValue) {
+				textArea.setScrollTop(Double.MAX_VALUE);
+			}
 		});
+
+		textArea.setPrefSize(0, 1500);
 		
 	}
 	

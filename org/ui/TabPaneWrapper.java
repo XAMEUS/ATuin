@@ -10,17 +10,17 @@ class TabPaneWrapper {
 	private SplitPane split;
 
 	public TabPaneWrapper(Orientation o, double splitLocation) {
-		split = new SplitPane();
-		split.setOrientation(o);
-		split.setDividerPosition(0, splitLocation);
+		this.split = new SplitPane();
+		this.split.setOrientation(o);
+		this.split.setDividerPosition(0, splitLocation);
 	}
 
 	public void addNodes(final Node node1, final Node node2) {
-		split.getItems().addAll(node1, node2);
+		this.split.getItems().addAll(node1, node2);
 	}
 
 	public Parent getNode() {
-		return split;
+		return this.split;
 	}
 	
 	public SplitPane getSplitPane() {

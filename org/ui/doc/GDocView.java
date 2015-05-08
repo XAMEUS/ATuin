@@ -16,10 +16,9 @@ public class GDocView extends Tab {
 		this.setText("Documentation");
 		this.setClosable(false);
 		this.setContent(content);
-		this.content.getStyleClass().add("doc");
+		//this.content.getStyleClass().add("doc");
 		this.content.setCenter(new AnchorPane(webView));
-		this.webView.setPrefSize(0, 0);
-		System.out.println(Doc.getRessource("index.html"));
+		//this.webView.setPrefSize(0, 0);
 		this.webEngine.load(Doc.getRessource("index.html"));	
 	}
 	

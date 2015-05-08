@@ -40,6 +40,8 @@ public class GEditorFX extends BorderPane {
 			}
 		});
 		
+		this.setPrefSize(0, 0);
+		
 	}
 	
 	public void drawInfos() {

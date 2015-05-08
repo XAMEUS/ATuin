@@ -7,12 +7,16 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class GDrawingFX extends ResizableCanvas {
-
+	
+	public GDrawingFX() {
+		this.setPrefSize(534, 534);
+	}
+	
 	public void clear() {
 		
 		final double width = this.canvas.getWidth();
     	final double height = this.canvas.getHeight();
-    	
+
     	GraphicsContext gc = this.canvas.getGraphicsContext2D();
 		gc.setFill(new Color(1, 1, 1, 1));
 		gc.setStroke(new Color(0.9, 0.9, 0.9, 1));
