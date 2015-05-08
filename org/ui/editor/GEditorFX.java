@@ -57,6 +57,10 @@ public class GEditorFX extends BorderPane {
 		
 	}
 	
+	public GTextEditorFX getTextEditor() {
+		return this.textEditor;
+	}
+	
 	public String getText() {
 		return this.textEditor.getText();
 	}
