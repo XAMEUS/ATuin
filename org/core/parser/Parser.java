@@ -66,8 +66,8 @@ public class Parser {
 	  		   up ; | down ;
 	  		   def FUNCTION |
 	  		   call STRING ( ARGSCALL ) ; |
-	  		   pass ; | while EXP { INST } |
-	  		   for EXP { INST } |
+	  		   pass ; | while ( EXP ) { INST } |
+	  		   for ( EXP ) { INST } |
 	  		   IF
 	  IF -> if ( EXP ) { INST } ELIF ;
 	  ELIF -> elif ( EXP ) { INST } ELIF | ELSE
@@ -151,7 +151,9 @@ public class Parser {
     	}
 		if (reader.check(Sym.FOR)) {
 			reader.eat(Sym.FOR);
+			reader.eat(Sym.LPAR);
 			Expression exp = expression();
+			reader.eat(Sym.RPAR);
 			reader.eat(Sym.LBRA);
 			Instruction instr = inst();
 			reader.eat(Sym.RBRA);
@@ -159,7 +161,9 @@ public class Parser {
 		}
 		if (reader.check(Sym.WHILE)) {
 			reader.eat(Sym.WHILE);
+			reader.eat(Sym.LPAR);
 			Expression exp = expression();
+			reader.eat(Sym.RPAR);
 			reader.eat(Sym.LBRA);
 			Instruction instr = inst();
 			reader.eat(Sym.RBRA);
