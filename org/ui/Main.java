@@ -33,6 +33,8 @@ public class Main extends Application {
 		Scene scene = new Scene(this.rootLayout);
 		scene.setFill(Color.TRANSPARENT);
 		
+		rootLayout.getStylesheets().add(Main.class.getResource("/org/ui/style/default.css").toString());
+		
 		this.primarySage.setScene(scene);
 		this.primarySage.show();
 		
