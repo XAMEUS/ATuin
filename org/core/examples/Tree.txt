@@ -1,7 +1,7 @@
 start
    def tree(s, n) {
       start
-      if n <= 0 {
+      if (n <= 0) {
          start
             forward s;
             forward 0-s;
