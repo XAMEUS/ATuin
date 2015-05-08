@@ -15,7 +15,8 @@ public class For implements Instruction {
 	
 	@Override
 	public void exec() throws Exception {
-		for (int i = 0; i < exp.eval().intValue(); i++) {
+		int n = exp.eval().intValue();
+		for (int i = 0; i < n; i++) {
 			if (instr != null)
 				instr.exec();
 		}
