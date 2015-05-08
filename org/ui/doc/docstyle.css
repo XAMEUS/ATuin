@@ -1,4 +1,70 @@
 body {
-	background: #282C2C;
-	padding: 2px;
+	/*background: #282C2C;*/
+	font-family: "Lucida sans","Liberation Sans";
+	font-size: 10pt;
+}
+
+h1 {
+	font-family: "Lucida sans","Liberation Sans";
+}
+
+li {
+    display: inline;
+    list-style: none;
+    margin: 10px;
+}
+
+nav {
+	background: #0B486B;
+	padding: 8px;
+	margin:-8px;
+}
+
+nav a {
+	background: #3B8686;
+	padding: 1px 5px;
+	color: white;
+    line-height: 160%
+}
+
+a {
+	text-decoration: none;
+}
+a:hover {
+	color: #FF7400;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td, th {
+    padding: 3px 6px;
+    border: 1px solid #0B486B;
+}
+
+.code {
+	color: #0B486B;
+    display: block;
+	font-family: "Liberation Mono";
+    padding: 11px
+}
+
+.code-inline {
+	color: #0B486B;
+	font-family: "Liberation Mono";
+}
+
+.keyword {
+	color: #79BD9A;
+	font-family: "Liberation Mono";
+}
+
+.warning {
+    color: deeppink;
+}
+
+.zz {
+	color: #3B8686;
 }
