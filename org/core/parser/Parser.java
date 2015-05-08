@@ -127,14 +127,18 @@ public class Parser {
     	}
 		if (reader.check(Sym.IF)) {
     		reader.eat(Sym.IF);
+    		reader.eat(Sym.LPAR);
 			Expression exp = expression();
+    		reader.eat(Sym.RPAR);
 			reader.eat(Sym.LBRA);
 			Instruction instr = inst();
 			reader.eat(Sym.RBRA);
     		If c = new If(exp, instr);
     		while (reader.check(Sym.ELIF)) {
     			reader.eat(Sym.ELIF);
+        		reader.eat(Sym.LPAR);
     			exp = expression();
+        		reader.eat(Sym.RPAR);
     			reader.eat(Sym.LBRA);
     			instr = inst();
     			reader.eat(Sym.RBRA);
