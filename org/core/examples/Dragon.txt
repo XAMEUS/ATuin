@@ -1,0 +1,45 @@
+start
+   def dy(s, n) {
+      pass;
+   }
+   def dx(s, n) {
+      start
+         v := 14142135 / 20000000;
+         if (n <= 0) {
+            forward s;
+         }
+         else {
+            start
+               turn 0-45;
+               call dx(s * v, n-1);
+               turn 90;
+               call dy(s * v, n-1);
+               turn 0-45;
+            end
+         }
+      end
+   }
+   def dy(s, n) {
+      start
+         v := 14142135 / 20000000;
+         if (n <= 0) {
+            forward s;
+         }
+         else {
+            start
+               turn 45;
+               call dx(s * v, n-1);
+               turn 0-90;
+               call dy(s * v, n-1);
+               turn 45;
+            end
+         }
+      end
+   }
+   def dragon(s, n) {
+      call dx(s, n);
+   }
+   forward 0-250;
+   down;
+   call dragon(600, 12);
+end
