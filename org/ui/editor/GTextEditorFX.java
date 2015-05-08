@@ -101,6 +101,14 @@ public class GTextEditorFX extends TabPane {
 		
 	}
 	
+	public void newTab(String name, String text) {
+		
+		TextTab tab = new TextTab(name);
+		tab.getTextArea().setText(text);
+		this.getTabs().add(tab);
+		
+	}
+	
 	public void setTabName(String name) {
 		for (Tab t : this.getTabs())
 			if (t.isSelected())
