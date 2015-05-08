@@ -24,7 +24,7 @@ public class Call implements Instruction, Expression {
 		for (int i = 0; i < args.length; i++)
 			args[i] = this.args[i].eval();
 		String last = Envionment.getEnvionment();
-		Envionment.setEnvionment(this.fname);
+		Envionment.setEnvionment(this.fname + System.nanoTime());
 		Envionment.getFunction(this.fname).call(args);
 		Envionment.setEnvionment(last);
 	}
@@ -35,7 +35,7 @@ public class Call implements Instruction, Expression {
 		for (int i = 0; i < args.length; i++)
 			args[i] = this.args[i].eval();
 		String last = Envionment.getEnvionment();
-		Envionment.setEnvionment(this.fname);
+		Envionment.setEnvionment(this.fname +  + System.nanoTime());
 		Envionment.getFunction(this.fname).call(args);
 		Number n = Envionment.getFunction(this.fname).eval();
 		Envionment.cleanEnvionment();
