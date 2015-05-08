@@ -72,6 +72,12 @@ public class Controller {
     		Dialogs.showErrorMessage(primaryStage, "The expression is not correct.", e.getMessage());
 			e.printStackTrace();
 		}
+		try {
+			reader.close();
+		} catch (IOException e) {
+			Dialogs.showErrorMessage(primaryStage, "aze", e.getMessage());
+			e.printStackTrace();
+		}
 		
 		System.out.println("Tree created...");
 		return prog;
