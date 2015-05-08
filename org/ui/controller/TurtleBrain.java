@@ -18,14 +18,22 @@ public class TurtleBrain {
 		Point p1 = new Point(turtle.getPosition());
 		turtle.forward(n.doubleValue());
 		Point p2 = new Point(turtle.getPosition());
-		Controller.drawing.drawLine(x * p1.x, y * p1.y, x * p2.x, y * p2.y);
-		
+		if (TurtleBrain.turtle.isDown())
+			Controller.drawing.drawLine(x * p1.x, y * p1.y, x * p2.x, y * p2.y);
 	}
 	
 	public static void turn(Number n) {
 		double r = n.doubleValue();
 		r = Math.PI * r / 180;
 		turtle.turn(r);
+	}
+	
+	public static void up() {
+		TurtleBrain.turtle.up();
+	}
+	
+	public static void down() {
+		TurtleBrain.turtle.down();
 	}
 	
 }

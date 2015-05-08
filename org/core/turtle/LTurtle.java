@@ -7,7 +7,7 @@ public class LTurtle {
 	
 	private Point point;
 	private Vector orientation;
-	private boolean status = true; // true : DOWN, false : UP
+	private boolean status = false; // true : DOWN, false : UP
 	
 	public LTurtle() {
 		this.orientation = new Vector(1, 0);
@@ -33,6 +33,18 @@ public class LTurtle {
 	
 	public Point getPosition() {
 		return this.point;
+	}
+
+	public void up() {
+		this.status = false;
+	}
+
+	public void down() {
+		this.status = true;
+	}
+	
+	public boolean isDown() {
+		return this.status;
 	}
 	
 }
