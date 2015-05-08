@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
+import org.core.examples.Examples;
 import org.ui.controller.Controller;
 import org.ui.editor.GEditorFX;
 
@@ -28,11 +29,13 @@ public class GMenuFX extends HBox {
 	
 	public GMenuFX(Stage primaryStage, GEditorFX editor) {
 		
+		Controller.editor = editor;
 		this.editor = editor;
 		
 		this.createMenuFile();
 		this.createMenuEdit();
 		this.createMenuRun();
+		createMenuSamples();
 		this.createMenuHelp();
 		
 		FlowPane flow = new FlowPane(Orientation.HORIZONTAL);
@@ -68,7 +71,7 @@ public class GMenuFX extends HBox {
 		newFile.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				GMenuFX.this.editor.newFile();
+				Controller.editor.newFile();
 				Controller.out.println("New file created...");
 			}
 		});
@@ -111,6 +114,40 @@ public class GMenuFX extends HBox {
 		
 		menu.getItems().add(run);
 		menu.getItems().add(new MenuItem("Run + Interpreter"));
+		
+		this.menuBar.getMenus().add(menu);
+		
+	}
+	
+	private void createMenuSamples() {
+
+		Menu menu = new Menu("Samples");
+		
+		MenuItem koch = new MenuItem("Koch");
+		koch.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Controller.open(Examples.class.getResource("Flocon_Koch.txt").getFile());
+			}
+		});
+		MenuItem dragon = new MenuItem("Dragon");
+		dragon.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Controller.open(Examples.class.getResource("Dragon.txt").getFile());
+			}
+		});
+		MenuItem tree = new MenuItem("Tree");
+		tree.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Controller.open(Examples.class.getResource("Tree.txt").getFile());
+			}
+		});
+		
+		menu.getItems().add(koch);
+		menu.getItems().add(dragon);
+		menu.getItems().add(tree);
 		
 		this.menuBar.getMenus().add(menu);
 		
