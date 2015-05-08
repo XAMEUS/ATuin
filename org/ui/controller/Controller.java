@@ -1,5 +1,6 @@
 package org.ui.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,6 +28,7 @@ public class Controller {
 	public static GConsoleFX out;
 	public static Stage primaryStage;
 	public static GDrawingFX drawing;
+	public static GEditorFX editor;
 	private static Instruction last_instruction;
 	
 	public static Program build(GEditorFX gefx) {
@@ -147,6 +149,39 @@ public class Controller {
 				e.printStackTrace();
 			}
 		}
+		
+	}
+
+	public static void open(String filepath) {
+		String[] t = filepath.split("/");
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(new File(filepath)));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+    		Dialogs.showErrorMessage(primaryStage, "Error.", e.getMessage());
+		}
+	    try {
+	        StringBuilder sb = new StringBuilder();
+	        String line = br.readLine();
+
+	        while (line != null) {
+	            sb.append(line);
+	            sb.append(System.lineSeparator());
+	            line = br.readLine();
+	        }
+	         Controller.editor.getTextEditor().newTab(t[t.length - 1].split("\\.")[0], sb.toString());
+	    } catch (IOException e) {
+			e.printStackTrace();
+    		Dialogs.showErrorMessage(primaryStage, "Error.", e.getMessage());
+		} finally {
+	        try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+	    		Dialogs.showErrorMessage(primaryStage, "Error.", e.getMessage());
+			}
+	    }
 		
 	}
 	
