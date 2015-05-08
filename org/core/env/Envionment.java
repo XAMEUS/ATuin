@@ -37,7 +37,11 @@ public class Envionment {
 	}
 
 	public static void cleanEnvionment() {
-		Envionment.map0.get(Envionment.status).clean();
+		Envionment.map0.remove(Envionment.status);
+	}
+	
+	public static void cleanAll() {
+		Envionment.map0.clear();
 	}
 	
 }
