@@ -10,11 +10,11 @@ start
          }
          else {
             start
-               turn 0-45;
+               turn 45;
                call dx(s * v, n-1);
-               turn 90;
+               turn 0-90;
                call dy(s * v, n-1);
-               turn 0-45;
+               turn 45;
             end
          }
       end
@@ -27,11 +27,11 @@ start
          }
          else {
             start
-               turn 45;
+               turn 0-45;
                call dx(s * v, n-1);
-               turn 0-90;
+               turn 90;
                call dy(s * v, n-1);
-               turn 45;
+               turn 0-45;
             end
          }
       end
@@ -40,6 +40,9 @@ start
       call dx(s, n);
    }
    forward 0-250;
+   turn 90;
+   forward 0-80;
+   turn 0-90;
    down;
    call dragon(600, 12);
 end

@@ -21,8 +21,7 @@ start
       end
    }
    turn 90;
-   forward 400;
-   turn 180;
+   forward 0-400;
    down;
    call tree(400, 11);
 end

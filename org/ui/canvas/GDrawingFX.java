@@ -23,8 +23,6 @@ public class GDrawingFX extends ResizableCanvas {
 		gc.clearRect(0, 0, width, height);
 		gc.fillRect(0, 0, width, height);
 		gc.setLineWidth(1);
-		gc.strokeLine(0, 0, width, height);
-		gc.strokeLine(width, 0, 0, height);
 		
 	}
 	

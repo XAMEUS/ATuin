@@ -3,6 +3,7 @@ package org.ui.controller;
 import org.core.env.Number;
 import org.core.env.Point;
 import org.core.turtle.LTurtle;
+import org.ui.dialogs.Dialogs;
 
 public class TurtleBrain {
 	
@@ -13,18 +14,23 @@ public class TurtleBrain {
 	}
 	
 	public static void move(Number n) {
-		double x = Controller.drawing.getWidth() / 1000;
-		double y = Controller.drawing.getHeight() / 1000;
-		Point p1 = new Point(turtle.getPosition());
-		turtle.forward(n.doubleValue());
-		Point p2 = new Point(turtle.getPosition());
-		if (TurtleBrain.turtle.isDown())
-			Controller.drawing.drawLine(x * p1.x, y * p1.y, x * p2.x, y * p2.y);
+		if (turtle.canMove(n.doubleValue())) {
+			double x = Controller.drawing.getWidth() / 1000;
+			double y = Controller.drawing.getHeight() / 1000;
+			Point p1 = new Point(turtle.getPosition());
+			turtle.forward(n.doubleValue());
+			Point p2 = new Point(turtle.getPosition());
+			if (TurtleBrain.turtle.isDown())
+				Controller.drawing.drawLine(x * p1.x, y * p1.y, x * p2.x, y * p2.y);
+		}
+		else {
+			Dialogs.showErrorMessage(Controller.primaryStage, "Turtle Error", "TurtuleOutOfBound Exception!");
+		}
 	}
 	
 	public static void turn(Number n) {
 		double r = n.doubleValue();
-		r = Math.PI * r / 180;
+		r = - Math.PI * r / 180;
 		turtle.turn(r);
 	}
 	

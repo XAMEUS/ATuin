@@ -27,7 +27,7 @@
 
 blank = "\n" | "\r" | " " | "\t"
 int   = [1-9][0-9]* | 0
-variable = [a-z][a-zA-Z]*
+variable = [a-z][a-zA-Z]*[0-9]*
 
 %%
 

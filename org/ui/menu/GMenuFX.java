@@ -18,7 +18,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
-import org.core.examples.Examples;
 import org.ui.controller.Controller;
 import org.ui.editor.GEditorFX;
 
@@ -127,21 +126,21 @@ public class GMenuFX extends HBox {
 		koch.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Controller.open(Examples.class.getResource("Flocon_Koch.txt").getFile());
+				Controller.open("samples/Flocon_Koch.txt");
 			}
 		});
 		MenuItem dragon = new MenuItem("Dragon");
 		dragon.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Controller.open(Examples.class.getResource("Dragon.txt").getFile());
+				Controller.open("samples/Dragon.txt");
 			}
 		});
 		MenuItem tree = new MenuItem("Tree");
 		tree.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Controller.open(Examples.class.getResource("Tree.txt").getFile());
+				Controller.open("samples/Tree.txt");
 			}
 		});
 		

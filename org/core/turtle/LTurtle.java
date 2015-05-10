@@ -46,5 +46,11 @@ public class LTurtle {
 	public boolean isDown() {
 		return this.status;
 	}
+
+	public boolean canMove(int d) {
+		double vx = this.point.x + this.orientation.x * d;
+		double vy = this.point.y + this.orientation.y * d;
+		return 	vx < 1000 && vy < 1000 && vx > 0 && vy > 0;
+	}
 	
 }
