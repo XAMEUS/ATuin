@@ -40,7 +40,7 @@ public class Function implements Instruction, Expression, Method {
 	
 	@Override
 	public void exec() throws Exception {
-		//Envionment.addFunction(this);
+		Envionment.addFunction(this);
 	}
 	
 	@Override

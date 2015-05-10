@@ -1,5 +1,7 @@
 package org.core.syntax;
 
-public interface Instruction {
+import java.io.Serializable;
+
+public interface Instruction extends Serializable {
 	public void exec() throws Exception;
 }

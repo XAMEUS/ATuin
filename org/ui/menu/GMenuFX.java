@@ -1,30 +1,25 @@
 package org.ui.menu;
 
 
+import java.awt.Desktop;
+import java.io.File;
+import java.net.URI;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import org.ui.controller.Controller;
 import org.ui.editor.GEditorFX;
 
-public class GMenuFX extends HBox {
+public class GMenuFX extends MenuBar {
 	
 	private GEditorFX editor;
-	private final MenuBar menuBar = new MenuBar();
 	
 	public GMenuFX(Stage primaryStage, GEditorFX editor) {
 		
@@ -32,12 +27,12 @@ public class GMenuFX extends HBox {
 		this.editor = editor;
 		
 		this.createMenuFile();
-		this.createMenuEdit();
+		//this.createMenuEdit();
 		this.createMenuRun();
-		createMenuSamples();
+		this.createMenuSamples();
 		this.createMenuHelp();
 		
-		FlowPane flow = new FlowPane(Orientation.HORIZONTAL);
+		/*FlowPane flow = new FlowPane(Orientation.HORIZONTAL);
 		flow.setAlignment(Pos.TOP_RIGHT);
 		flow.setHgap(0);
 		//flow.setStyle("-fx-background-color: linear-gradient(to top, #262626, #2F2F2F)");
@@ -55,10 +50,10 @@ public class GMenuFX extends HBox {
 		bp.setCenter(quit);
 		flow.getChildren().add(bp);
 		
-		this.setAlignment(Pos.CENTER_LEFT);
-		HBox.setHgrow(flow, Priority.ALWAYS);
+		//this.setAlignment(Pos.CENTER_LEFT);
+		HBox.setHgrow(flow, Priority.ALWAYS);*/
 		
-		this.getChildren().addAll(this.menuBar, flow);
+		//this.getChildren().addAll(this);
 		
 	}
 
@@ -74,16 +69,82 @@ public class GMenuFX extends HBox {
 				Controller.out.println("New file created...");
 			}
 		});
+		MenuItem load = new MenuItem("Load");
+		load.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				FileChooser fileChooser = new FileChooser();
+
+				// Show open file dialog
+				File file = fileChooser.showOpenDialog(Controller.primaryStage);
+
+				if (file != null) {
+					Controller.open(file.getAbsolutePath());
+				}
+			}
+		});
+		MenuItem save = new MenuItem("Save");
+		save.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				FileChooser fileChooser = new FileChooser();
+
+				// Show save file dialog
+				File file = fileChooser.showSaveDialog(Controller.primaryStage);
+
+				if (file != null) {
+					Controller.save_file(editor, file.getAbsolutePath());
+				}
+			}
+		});
+		MenuItem impo = new MenuItem("Import");
+		impo.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				FileChooser fileChooser = new FileChooser();
+
+				// Show open file dialog
+				File file = fileChooser.showOpenDialog(Controller.primaryStage);
+
+				if (file != null) {
+					Controller.last_instruction = Controller.load_build(file.getAbsolutePath());
+					Controller.out.println(Controller.last_instruction + " loaded");
+				}
+			}
+		});
+		MenuItem export = new MenuItem("Export");
+		export.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				FileChooser fileChooser = new FileChooser();
+
+				// Show save file dialog
+				File file = fileChooser.showSaveDialog(Controller.primaryStage);
+
+				if (file != null) {
+					Controller.save_build(Controller.last_instruction, file.getAbsolutePath());
+				}
+			}
+		});
+		MenuItem quit = new MenuItem("Quit");
+		quit.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.exit(0);
+			}
+		});
+
 		menu.getItems().add(newFile);
-		
 		menu.getItems().add(new SeparatorMenuItem());
-		menu.getItems().add(new MenuItem("Load"));
-		menu.getItems().add(new MenuItem("Save"));
+		menu.getItems().add(load);
+		menu.getItems().add(save);
 		menu.getItems().add(new SeparatorMenuItem());
-		menu.getItems().add(new MenuItem("Import"));
-		menu.getItems().add(new MenuItem("Export"));
+		menu.getItems().add(impo);
+		menu.getItems().add(export);
+		menu.getItems().add(new SeparatorMenuItem());
+		menu.getItems().add(quit);
 		
-		this.menuBar.getMenus().add(menu);
+		this.getMenus().add(menu);
 	}
 
 
@@ -91,19 +152,19 @@ public class GMenuFX extends HBox {
 		
 		Menu menu = new Menu("Edit");
 		
-		menu.getItems().add(new MenuItem("Cut"));
+		menu.getItems().add(new MenuItem("Cut     "));
 		menu.getItems().add(new MenuItem("Copy"));
 		menu.getItems().add(new MenuItem("Paste"));
 		
 		
-		this.menuBar.getMenus().add(menu);
+		this.getMenus().add(menu);
 	}
 
 	private void createMenuRun() {
 
 		Menu menu = new Menu("Run");
 		
-		MenuItem run = new MenuItem("Run");
+		MenuItem run = new MenuItem("Run     ");
 		run.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -112,9 +173,17 @@ public class GMenuFX extends HBox {
 		});
 		
 		menu.getItems().add(run);
-		menu.getItems().add(new MenuItem("Run + Interpreter"));
 		
-		this.menuBar.getMenus().add(menu);
+		MenuItem call = new MenuItem("Call");
+		call.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Controller.recall();
+			}
+		});
+		menu.getItems().add(call);
+		
+		this.getMenus().add(menu);
 		
 	}
 	
@@ -122,7 +191,7 @@ public class GMenuFX extends HBox {
 
 		Menu menu = new Menu("Samples");
 		
-		MenuItem koch = new MenuItem("Koch");
+		MenuItem koch = new MenuItem("Koch    ");
 		koch.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -148,7 +217,7 @@ public class GMenuFX extends HBox {
 		menu.getItems().add(dragon);
 		menu.getItems().add(tree);
 		
-		this.menuBar.getMenus().add(menu);
+		this.getMenus().add(menu);
 		
 	}
 	
@@ -156,11 +225,39 @@ public class GMenuFX extends HBox {
 
 		Menu menu = new Menu("Help");
 		
-		menu.getItems().add(new MenuItem("Welcome"));
-		menu.getItems().add(new MenuItem("Documentation"));
-		menu.getItems().add(new MenuItem("About"));
+		MenuItem welcome = new MenuItem("Welcome");
+		welcome.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+			        try {
+			            desktop.browse(new URI("https://dl.dropboxusercontent.com/u/53110380/atuin/website/welcome.html"));
+			        } catch (Exception e) {
+			            e.printStackTrace();
+			        }
+			    }
+			}
+		});
+		MenuItem about = new MenuItem("About");
+		about.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+			        try {
+			            desktop.browse(new URI("https://dl.dropboxusercontent.com/u/53110380/atuin/website/features.html"));
+			        } catch (Exception e) {
+			            e.printStackTrace();
+			        }
+			    }
+			}
+		});
+		menu.getItems().add(welcome);
+		//menu.getItems().add(new MenuItem("Documentation  "));
+		menu.getItems().add(about);
 		
-		this.menuBar.getMenus().add(menu);
+		this.getMenus().add(menu);
 		
 	}
 	

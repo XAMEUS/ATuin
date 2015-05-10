@@ -23,6 +23,7 @@ public class GDrawingFX extends ResizableCanvas {
 		gc.clearRect(0, 0, width, height);
 		gc.fillRect(0, 0, width, height);
 		gc.setLineWidth(1);
+    	gc.setStroke(new Color(1, 0, 0, 1));
 		
 	}
 	
@@ -32,9 +33,13 @@ public class GDrawingFX extends ResizableCanvas {
 		Controller.recall();
 	}
 	
+	public void setStroke(double r, double g, double b, double a) {
+    	GraphicsContext gc = this.canvas.getGraphicsContext2D();
+    	gc.setStroke(new Color(r, g, b, a));
+	}
+	
 	public void drawLine(double x1, double y1, double x2, double y2) {
     	GraphicsContext gc = this.canvas.getGraphicsContext2D();
-    	gc.setStroke(new Color(1, 0, 0, 1));
     	gc.strokeLine(x1, y1, x2, y2);
 	}
 	

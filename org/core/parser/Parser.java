@@ -23,6 +23,7 @@ import org.core.syntax.expressions.Variable;
 import org.core.syntax.expressions.Xor;
 import org.core.syntax.instructions.Assign;
 import org.core.syntax.instructions.Call;
+import org.core.syntax.instructions.Color;
 import org.core.syntax.instructions.Decl;
 import org.core.syntax.instructions.Down;
 import org.core.syntax.instructions.For;
@@ -40,7 +41,7 @@ import org.core.tokens.Sym;
 
 public class Parser {
 	
-	/*
+	/* Old
 	 * s -> decl inst $
 	 * decl -> Var id ; Decl | e
 	 * inst -> id = exp |
@@ -56,7 +57,7 @@ public class Parser {
 	 * int -> [1-9][0-9]* | 0
 	 */
 	
-	/*
+	/* New
 	  S -> DECL INST $
 	  DECL -> var STRING ; Decl | e     (inutile)
 	  INST -> STRING := EXP ; |
@@ -230,6 +231,18 @@ public class Parser {
 			reader.eat(Sym.ENDL);
 			return call;
 		}
+		if (reader.check(Sym.COLOR)) {
+			reader.eat(Sym.COLOR);
+			Expression r = expression();
+			reader.eat(Sym.COMMA);
+			Expression g = expression();
+			reader.eat(Sym.COMMA);
+			Expression b = expression();
+			reader.eat(Sym.COMMA);
+			Expression a = expression();
+			reader.eat(Sym.ENDL);
+			return new Color(r, g, b, a);
+		}
 		if (reader.check(Sym.VARIABLE)) {
 			String vname = reader.getStringValue();
     		reader.eat(Sym.VARIABLE);
@@ -282,7 +295,7 @@ public class Parser {
 				reader.check(Sym.PRINT) || reader.check(Sym.IF) ||
 				reader.check(Sym.ELIF) || reader.check(Sym.ELSE) ||
 				reader.check(Sym.FOR) || reader.check(Sym.WHILE) ||
-				reader.check(Sym.PASS) ||
+				reader.check(Sym.PASS) || reader.check(Sym.COLOR) ||
 				reader.check(Sym.DEF) || reader.check(Sym.CALL) ||
 				reader.check(Sym.UP) || reader.check(Sym.DOWN))
 			return new LinkedInst(inst(), procedure());

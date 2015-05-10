@@ -2,10 +2,12 @@ package org.ui.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -29,7 +31,7 @@ public class Controller {
 	public static Stage primaryStage;
 	public static GDrawingFX drawing;
 	public static GEditorFX editor;
-	private static Instruction last_instruction;
+	public static Instruction last_instruction;
 	
 	public static Program build(GEditorFX gefx) {
 
@@ -86,7 +88,18 @@ public class Controller {
 		
 	}
 	
-	public static void save_build(Program prog, String filename) {
+	public static void save_file(GEditorFX gefx, String filename) {
+		try {
+			PrintWriter writer = new PrintWriter("src.txt", "UTF-8");
+			writer.print(gefx.getText());
+			writer.close();
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+    		Dialogs.showErrorMessage(primaryStage, "File creation error", e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	public static void save_build(Instruction prog, String filename) {
 
 		FileOutputStream f = null;
 		try {
@@ -107,10 +120,41 @@ public class Controller {
 		
 	}
 	
-	public static Program load_build(String filename) {
+	public static Instruction load_build(String filename) {
 		
-		//TODO
-		return null;
+		FileInputStream f = null;
+		Instruction instr = null;
+		try {
+			f = new FileInputStream(filename);
+		} catch (FileNotFoundException e) {
+			out.println(e.getMessage());
+    		Dialogs.showErrorMessage(primaryStage, "File not found.", e.getMessage());
+    		e.printStackTrace();
+		}
+		try {
+			ObjectInputStream o = new ObjectInputStream(f);
+			instr = (Instruction) o.readObject();
+		} catch (IOException e) {
+			out.println(e.getMessage());
+    		Dialogs.showErrorMessage(primaryStage, "IOException.", e.getMessage());
+    		e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			out.println(e.getMessage());
+    		Dialogs.showErrorMessage(primaryStage, "ClassNotFoundException.", e.getMessage());
+    		e.printStackTrace();
+		}
+		
+		TurtleBrain.newTurtle();
+		drawing.draw();
+		try {
+			instr.exec();
+		} catch (Exception e) {
+			out.println(e.getMessage());
+    		Dialogs.showErrorMessage(primaryStage, "Error.", e.getMessage());
+    		e.printStackTrace();
+		}
+		
+		return instr;
 		
 	}
 	

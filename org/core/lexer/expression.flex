@@ -71,6 +71,7 @@ variable = [a-z][a-zA-Z]*[0-9]*
 	"forward" {return token(Sym.FORWARD);}
 	"turn" {return token(Sym.TURN);}
 	"up" {return token(Sym.UP);}
+	"color" {return token(Sym.COLOR);}
 	"down" {return token(Sym.DOWN);}
 	"start" {return token(Sym.START);}
 	"end" {return token(Sym.END);}

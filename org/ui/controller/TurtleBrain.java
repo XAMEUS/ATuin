@@ -3,7 +3,6 @@ package org.ui.controller;
 import org.core.env.Number;
 import org.core.env.Point;
 import org.core.turtle.LTurtle;
-import org.ui.dialogs.Dialogs;
 
 public class TurtleBrain {
 	
@@ -13,7 +12,7 @@ public class TurtleBrain {
 		TurtleBrain.turtle = new LTurtle();
 	}
 	
-	public static void move(Number n) {
+	public static void move(Number n) throws Exception {
 		if (turtle.canMove(n.doubleValue())) {
 			double x = Controller.drawing.getWidth() / 1000;
 			double y = Controller.drawing.getHeight() / 1000;
@@ -24,7 +23,7 @@ public class TurtleBrain {
 				Controller.drawing.drawLine(x * p1.x, y * p1.y, x * p2.x, y * p2.y);
 		}
 		else {
-			Dialogs.showErrorMessage(Controller.primaryStage, "Turtle Error", "TurtuleOutOfBound Exception!");
+			throw new Exception("TurtleOutOfBound");
 		}
 	}
 	
@@ -32,6 +31,18 @@ public class TurtleBrain {
 		double r = n.doubleValue();
 		r = - Math.PI * r / 180;
 		turtle.turn(r);
+	}
+	
+	public static void color(double r, double g, double b, double a) {
+		if (r > 255) r = 255;
+		if (r < 0) r = 0;
+		if (g > 255) g = 255;
+		if (g < 0) g = 0;
+		if (b > 255) b = 255;
+		if (b < 0) b = 0;
+		if (a > 255) a = 255;
+		if (a < 0) a = 0;
+		Controller.drawing.setStroke(r/255, g/255, b/255, a/255);
 	}
 	
 	public static void up() {

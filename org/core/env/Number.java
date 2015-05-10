@@ -1,6 +1,8 @@
 package org.core.env;
 
-public class Number {
+import java.io.Serializable;
+
+public class Number implements Serializable {
 	
 	private java.lang.Number n;
 	

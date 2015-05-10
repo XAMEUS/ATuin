@@ -46,6 +46,8 @@ public enum Sym {
     FORWARD,
     TURN,
     
+    COLOR,
+    
     UP,
     DOWN,
     
