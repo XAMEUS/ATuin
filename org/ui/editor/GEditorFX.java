@@ -13,7 +13,7 @@ public class GEditorFX extends BorderPane {
 		
 		this.textEditor = new GTextEditorFX(this);
 
-		String t = "var a;"
+		/*String t = "var a;"
 				+ "var b;"
 				+ "start\n"
 				+ GTextEditorFX.tabSpace + "a := 2;"
@@ -26,7 +26,30 @@ public class GEditorFX extends BorderPane {
 				+ GTextEditorFX.tabSpace + "forward b;"
 				+ GTextEditorFX.tabSpace + "down;"
 				+ GTextEditorFX.tabSpace + "forward b+7;"
-				+ "end";
+				+ "end";*/
+		String t = "start\n"
+				+ GTextEditorFX.tabSpace + "def p(a, b) {\n"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "start\n"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "c := 1;"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "if (b > 0) {\n"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace +    "c := a * p(a, b-1);"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "} elif (b < 0 ) {\n"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace +   " c := 1 / p(a, 0-b);"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "}\n"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "end\n"
+				+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "return c;"
+	    	  + GTextEditorFX.tabSpace + "}\n"
+	+ GTextEditorFX.tabSpace + "print p(2, 10);"
+	+ GTextEditorFX.tabSpace + "down;"
+	+ GTextEditorFX.tabSpace + "i := 0;"
+	+ GTextEditorFX.tabSpace + "while (i < 32) {\n"
+		+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "start\n"
+		+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace +"i := i + 1;"
+		+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "forward p(12/10, i);"
+		+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "turn 90;"
+		+ GTextEditorFX.tabSpace + GTextEditorFX.tabSpace + "end\n"
+		+ GTextEditorFX.tabSpace + "}\n"
+		+ "end";
 		t = t.replace(";", ";\n");
 		this.textEditor.getTextArea().setText(t);
 		this.textEditor.setTabName("Example File");
