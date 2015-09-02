@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+    <title>A'Tuin Twist</title>
+    <head>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    </head>
+
+    <body>
+        
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo"><img src="atuin-title.PNG" alt="title" height="63px"></a>
+                <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="license.html">License</a></li>
+                    <li><a href="about.html">Team</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="license.html">License</a></li>
+                    <li><a href="about.html">Team</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container" style="width:80%">
+            <div class="section">
+                <div class="card-panel center" style="background-color:#79BD9A">
+                    <h3 style="color:white">Example: Twist</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+<div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">start</span>
+   <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">s</span><span style="color: #f8f8f2">(a,</span> <span style="color: #f8f8f2">b,</span> <span style="color: #f8f8f2">s,</span> <span style="color: #f8f8f2">e)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">start</span>
+         <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(s</span> <span style="color: #f92672">&lt;</span> <span style="color: #f8f8f2">e)</span> <span style="color: #f8f8f2">{</span>
+            <span style="color: #66d9ef">start</span>
+               <span style="color: #f92672">color</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">255</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">255</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">e,</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">255</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">e,</span> <span style="color: #ae81ff">255</span><span style="color: #f8f8f2">;</span>
+               <span style="color: #f8f8f2">a</span> <span style="color: #f8f8f2">:</span><span style="color: #f92672">=</span> <span style="color: #f8f8f2">a</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">b;</span>
+               <span style="color: #f8f8f2">s</span> <span style="color: #f8f8f2">:</span><span style="color: #f92672">=</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">;</span>
+               <span style="color: #f92672">forward</span> <span style="color: #f8f8f2">a;</span>
+               <span style="color: #f92672">turn</span> <span style="color: #ae81ff">7</span><span style="color: #f8f8f2">;</span>
+               <span style="color: #66d9ef">call</span> <span style="color: #f8f8f2">s(a,</span> <span style="color: #f8f8f2">b,</span> <span style="color: #f8f8f2">s,</span> <span style="color: #f8f8f2">e);</span>
+            <span style="color: #66d9ef">end</span>
+         <span style="color: #f8f8f2">}</span>
+      <span style="color: #66d9ef">end</span>
+   <span style="color: #f8f8f2">}</span>
+   <span style="color: #f92672">down;</span>
+   <span style="color: #66d9ef">call</span> <span style="color: #a6e22e">s</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f92672">/</span><span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2200</span><span style="color: #f8f8f2">);</span>
+<span style="color: #66d9ef">end</span>
+</pre></div>
+
+            <center>
+                <img src="fade.PNG" class="responsive-img" alt="">
+            </center>
+        </div>
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Contacts</h5>
+                        <p class="grey-text text-lighten-4">maxime.gourgoulhon@gmail.com<br>samuel.elbe@gmail.com</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Sources</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="https://github.com/xameus/Logoturtle">Github</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    &copy; 2015 Copyright
+                    <a class="grey-text text-lighten-4 right" href="license.html">License</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/init.js"></script>
+    </body>
+</html>  

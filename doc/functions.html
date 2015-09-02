@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>A'Tuin simple documentation - Variables</title>
+		<link rel="stylesheet" href="docstyle.css">
+	</head>
+	<body>
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="variables.html">Variables</a>
+			<a href="operators.html">Operators</a>
+			<a href="expressions.html">Expressions</a>
+			<a href="instructions.html">Instructions</a>
+			<a href="functions.html">Functions</a>
+		</nav>
+		<p>
+            Declare:<br>
+            <span class="code"><a href="def.html" class="keyword">def</a> fname( args ) { <a href="pass.html" class="keyword">pass</a>; } <br></span>
+            Sometimes you need to declare functions (ex: the dragon algorithm).
+        </p>
+        <p>args = {a, b, c, ...} or {}</p>
+        <p>Examples:
+            <span class="code">
+                <a href="def.html" class="keyword">def</a> f(a) {<br>
+                &nbsp;&nbsp;&nbsp;<a href="print.html" class="keyword">print</a> a;<br>
+                }<br>
+                <a href="def.html" class="keyword">def</a> g(a, b) {<br>
+                &nbsp;&nbsp;&nbsp;start<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c := a + b;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="print.html" class="keyword">print</a> c;<br>
+                &nbsp;&nbsp;&nbsp;end<br>
+                }
+            </span>
+        </p>
+        
+        <p><span class="warning">/!\</span> Variables are local (cannot use variables outside of the function).</p>
+        
+        <p>Recursive example:
+            <span class="code">
+                <a href="def.html" class="keyword">def</a> p(a, b) {<br>
+                &nbsp;&nbsp;&nbsp;<a href="start.html" class="keyword">start</a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c := 1;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="if.html" class="keyword">if</a> (b &gt; 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c := a * p(a, b-1);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="elif.html" class="keyword">elif</a> (b &lt; 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c := 1 / p(a, 0-b);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;<a href="end.html" class="keyword">end</a><br>
+                &nbsp;&nbsp;&nbsp;<a href="return.html" class="keyword">return</a> c;<br>
+                }
+            </span>
+        </p>
+        
+        <p>Functions can be used in expressions:
+            <span class="code">
+                a := p(2, 10);<br>
+                print a;
+            </span>
+        </p>
+	</body>
+</html>  

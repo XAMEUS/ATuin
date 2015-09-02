@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+    <title>A'Tuin - Tutorials</title>
+    <head>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    </head>
+
+    <body>
+        
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo"><img src="atuin-title.PNG" alt="title" height="63px"></a>
+                <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="license.html">License</a></li>
+                    <li><a href="about.html">Team</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="license.html">License</a></li>
+                    <li><a href="about.html">Team</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container">  
+            
+            <h4>Tutorial</h4>
+                     
+            <div class="section">
+                <h5>Basic Control</h5>
+                
+                <p>                
+                    Use instructions to move vertically or horizontally a virtual cursor. The initial position of it is at (500,500).<br>
+                    The cursor can have two states <b>up</b> or <b>down</b>, 
+                    to draw just put down the cursor and start moving; go back up to move without living a mark.
+                </p>
+                <p>
+                    Instructions blocks need to open with <b>start</b> and to close with <b>end</b>. 
+                    An instruction must end with a semi-colon '<b>;</b>'.</p>
+                <p>
+                    Cursor can only move forward by using the following command : <b>forward</b>
+                    followed by an expression which can be a variable, a value or the result of a function.
+                    A'Tuin also allow the cursor to turn counterclockwise (ie, the opposit direction of clockwise rotation) 
+                    by a given angle in degrees with : <b>turn</b> followed by an expression.
+                </p>
+                <p>
+                    You can change at any time the color of the mark by using : <b>color</b> and a RGBa value (ex: 255, 0, 0, 255 is solid red).
+                </p>
+            </div> 
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h5>Functions &amp; Variables</h5>
+                
+                <p>  
+                    All variables must begin with a lowercase letter, same case for functions.<br>              
+                    Registered variables in order to effectively use the functions or mathematical operators (arithmetic: +, -, *, /, %, int(exp), boolean: and, or, xor, not).
+                </p>
+                <p>
+                    You can also registered functions to make more complex designs.<br>
+                    To do so write your function as followed : <b>def</b> /*NAME*/ (var1, var2, ...) { instructions }.<br>
+                    You can put as much variables as you want (there can be none) and 
+                    open the instructions bloc of the function with parenthesis.<br>
+                    To call a function or it's result, use <b>call</b> /*NAME*/ (val1, val2, ...) 
+                    by putting as much values there is variables.                   
+                </p>
+                <p>
+                    The function can return a value if you want to, but asking a value without a return statement will fail.
+                </p>
+                
+                <a href="quickstart.html#ex">Here's an example for practice</a>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h5>Conditions &amp; Loop Control</h5>
+                
+                <p>  
+                    A'Tuin can support the conditionnal structure in the same way as the programming language Python.<br>
+                    A complete conditionnal structure look like : <b>if</b> (conditions) { instructions } 
+                    <b>elif</b> (conditions) { instructions } <b>else</b> { instructions }<br>
+                    You don't need to write a complete conditionnal structure, bear just in mind that the principal structure require only 
+                    <b>if</b> (conditions) { instructions }.<br>
+                    You can use the conditionnal structure in function and loop.
+                </p>
+                <p>
+                    There is two type of loop, <b>for</b> loop and <b>while</b> loop.<br>
+                    Both are written in the same way : 
+                    <b>for</b> ( expression ) { instructions } and <b>while</b> ( conditions ) { instructions }.<br>  
+                </p>                
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h5>Examples</h5>
+                <p>  
+                    See concrete <a href="examples.html">examples</a>.
+                </p>             
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h4>Advanced</h4>
+                <h5>Compile sources</h5>
+                <p>You should use a complete jdk (JavaFX included).</p>
+                <ol>
+                    <li>Install <a href="http://www.eclipse.org/efxclipse/index.html">e(fx)clipse</a>, which provides JavaFX tooling for the Eclipse IDE.</li>
+                    <li>Create a new Project > JavaFX > JavaFX Project. You may try to run the default application to try JavaFX. Delete the default 'application' package.</li>
+                    <li>Add the <b>org/</b> source folder to the src/ folder of the eclipse project.</li>
+                    <li>Add the <b>samples/</b> source folder to the eclipse project folder (so next to src/ and bin/)</li>
+                    <li>Right clic > Refresh</li>
+                    <li>Launch org.ui.Main</li>
+                </ol>
+            </div>
+            
+        </div>
+        
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Contacts</h5>
+                        <p class="grey-text text-lighten-4">maxime.gourgoulhon@gmail.com<br>samuel.elbe@gmail.com</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Sources</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="https://github.com/xameus/Logoturtle">Github</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    &copy; 2015 Copyright
+                    <a class="grey-text text-lighten-4 right" href="">Licence</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/init.js"></script>
+    </body>
+</html> 

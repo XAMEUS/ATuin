@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+    <title>A'Tuin - Quick Starter Guide</title>
+    <head>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    </head>
+
+    <body>
+        
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo"><img src="atuin-title.PNG" alt="title" height="63px"></a>
+                <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="license.html">License</a></li>
+                    <li><a href="about.html">Team</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="download.html">Download</a></li>
+                    <li><a href="quickstart.html">Quickstart</a></li>
+                    <li><a href="license.html">License</a></li>
+                    <li><a href="about.html">Team</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container" style="width:80%">
+            <div class="section">
+                <div class="card-panel center" style="background-color:#79BD9A">
+                    <h3 style="color:white">Quick Start Guide</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="section">
+                <p>Welcome to the Quick Start Guide! The aim is to help you get a grip on A'Tuin.</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="section">
+                <h4>Before you start...</h4>
+                <ul>
+                    <li style="list-style-type: square;">If you want to run the .jar, make sure that Java 8 is properly installed on your computer.</li>
+                    <li style="list-style-type: square;">Mind that the interface uses JavaFX, a full jdk envioronment is requiered if you want to be able to compile the sources.</li>
+                </ul>
+            </div>
+        </div>
+        
+
+        <div class="container">
+            
+                <h4 class="center">Here you can find a tutorial for A'Tuin</h4>     
+                <div class="section center"><a href="tutorial.html" class="waves-effect waves-light btn-large" style="background-color:#79BD9A">Tutorial</a></div>
+            
+            <div class="divider"></div>
+            <div class="section">
+                <h5>Informations</h5>
+                <p>                
+                    This interpreter takes its instructions and draw a picture built from it. 
+                    Use these instructions to move vertically or horizontally a virtual cursor. 
+                    If the cursor is down each move leaves a mark, if moving in position high nothing is written. 
+                    The instructions also allow the cursor to turn counterclockwise by a given angle in degrees.
+                </p>
+            </div>
+        </div>
+        
+        <div class="container">
+            
+            <div class="section">
+                <h5>Install on windows</h5>
+                <p>Just execute 'build\deploy\bundles\ATuin-1.0.exe'</p>
+                <img src="install.PNG" class="responsive-img" alt="install">
+                <p>The program will be installed in: C:\Users\Username\AppData\Local\ATuin</p>
+                <h5>Use .jar</h5>
+                <p>If you want to run the .jar, just go to 'build/dist', then run the following command:</p>
+                <p class="card-panel black" style="padding:4px 12px; color:white">java -jar ATuin.jar</p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            
+            <div class="section">
+                <h5 id="ex">First program</h5>
+                <p>Let's try our first program, put the following text in the code editor:</p>
+                
+                <!-- HTML generated using hilite.me -->
+<div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">start</span>
+   <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">s</span><span style="color: #f8f8f2">(a,</span> <span style="color: #f8f8f2">b,</span> <span style="color: #f8f8f2">s,</span> <span style="color: #f8f8f2">e)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">start</span>
+         <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(s</span> <span style="color: #f92672">&lt;</span> <span style="color: #f8f8f2">e)</span> <span style="color: #f8f8f2">{</span>
+            <span style="color: #66d9ef">start</span>
+               <span style="color: #f8f8f2">a</span> <span style="color: #f8f8f2">:</span><span style="color: #f92672">=</span> <span style="color: #f8f8f2">a</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">b;</span>
+               <span style="color: #f8f8f2">s</span> <span style="color: #f8f8f2">:</span><span style="color: #f92672">=</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">;</span>
+               <span style="color: #f92672">forward</span> <span style="color: #f8f8f2">a;</span>
+               <span style="color: #f92672">turn</span> <span style="color: #ae81ff">90</span><span style="color: #f8f8f2">;</span>
+               <span style="color: #66d9ef">call</span> <span style="color: #a6e22e">s</span><span style="color: #f8f8f2">(a, </span> <span style="color: #f8f8f2">b,</span> <span style="color: #f8f8f2">s,</span> <span style="color: #f8f8f2">e);</span>
+            <span style="color: #66d9ef">end</span>
+         <span style="color: #f8f8f2">}</span>
+      <span style="color: #66d9ef">end</span>
+   <span style="color: #f8f8f2">}</span>
+   <span style="color: #f92672">forward</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">-</span><span style="color: #ae81ff">25</span><span style="color: #f8f8f2">;</span>
+   <span style="color: #f92672">down;</span>
+   <span style="color: #66d9ef">call</span> <span style="color: #a6e22e">s</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">50</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">120</span><span style="color: #f8f8f2">);</span>
+<span style="color: #66d9ef">end</span>
+</pre>
+</div>
+
+                <p>Then run the program (Run>Run); this code will draw:</p>
+
+                <center>
+                    <img class="responsive-img" src="spiral.PNG" alt="picture">
+                </center>
+                
+                <h5>More</h5>
+                <ul>
+                    <li style="list-style-type: square;">Small integrated <a href="doc/index.html"> documentation</a>.</li>
+                    <li style="list-style-type: square;">Some <a href="examples.html">examples</a>.</li>
+                </ul>
+                <p></p>
+                <p></p>
+            </div>
+            
+        </div>
+        
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Contacts</h5>
+                        <p class="grey-text text-lighten-4">maxime.gourgoulhon@gmail.com<br>samuel.elbe@gmail.com</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Sources</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="https://github.com/xameus/Logoturtle">Github</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    &copy; 2015 Copyright
+                    <a class="grey-text text-lighten-4 right" href="license.html">License</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/init.js"></script>
+    </body>
+</html>  

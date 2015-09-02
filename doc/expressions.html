@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>A'Tuin simple documentation - Expressions</title>
+		<link rel="stylesheet" href="docstyle.css">
+	</head>
+	<body>
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="variables.html">Variables</a>
+			<a href="operators.html">Operators</a>
+			<a href="expressions.html">Expressions</a>
+			<a href="instructions.html">Instructions</a>
+			<a href="functions.html">Functions</a>
+		</nav>
+		<p>
+		There are two types of operators:
+			<a href="boolean.html" class="zz">BOOLEAN</a> or <a href="arithmetic.html" class="zz">ARITHMETIC</a>
+		</p>
+        
+        <p>Examples:<br>
+            <span class="code">
+                ((1 / 2) + 3)<br>
+                a - (b % 2)<br>
+                6 * f(2, 3)<br>
+                (f() and g(a)) or ((4 * h(b)) = 1)
+            </span>
+        </p>
+        
+        <p><span class="warning">/!\</span> Parentheses are important, <span class="code-inline">1/2+3</span> gives <span class="code-inline">0.2</span> while <span class="code-inline">(1/2)+3</span> gives <span class="code-inline">3.5</span> ; because expressions are read from the right.</p>
+        
+        <p>Grammar:<br>
+            <span class="code">
+                EXP -> INT EXPSUITE | ID EXPSUITE | (EXP) EXPSUITE<br>
+                EXPSUITE -> + EXP | - EXP | * EXP | / EXP | e
+	  				| and EXP | or EXP | xor EXP | = EXP
+	  				| &lt;EQ EXP | &rt;EQ EXP;
+                EQ -> = | e<br>
+                ID -> STRING | STRING ( ARGSDEF ) | STRING ( ARGSCALL )<br>
+                IDNEXT -> ID | ID , IDNEXT;<br>
+                EXPNEXT -> EXP | EXP , EXPNEXT;<br>
+                ARGSDEF ->  EXP EXPNEXT | e<br>
+                ARGSCALL -> ID IDNEXT | e<br>
+                STRING -> [a-z][a-zA-Z0-9]*<br>
+                INT -> [1-9][0-9]* | 0<br>
+            </span>
+        </p>
+	</body>
+</html>  
