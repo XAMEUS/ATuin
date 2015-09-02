@@ -1,2 +1,3 @@
-Visite the website : http://xameus.github.io/LogoTurtle
+Visite the website : http://xameus.github.io/LogoTurtel
+
 Sources : https://github.com/XAMEUS/LogoTurtle (master)
