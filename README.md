@@ -1,3 +1,3 @@
-Visite the website : http://xameus.github.io/LogoTurtle
+Visite the website : http://xameus.github.io/ATuin
 
-Sources : https://github.com/XAMEUS/LogoTurtle (master)
+Sources : https://github.com/XAMEUS/ATuin (master)
