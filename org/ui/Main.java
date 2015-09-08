@@ -44,6 +44,9 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		
+		/*System.out.println("Working Directory = " +
+	              System.getProperty("user.dir"));*/
+		
 		Main.launch(args);
         
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {

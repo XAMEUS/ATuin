@@ -1,0 +1,36 @@
+start
+   def koch(s, n) {
+      start
+         if (n <= 0) {
+            forward s;
+         }
+         else {
+            start
+               call koch(s/3, n-1);
+               turn 0-60;
+               call koch(s/3, n-1);
+               turn 120;
+               call koch(s/3, n-1);
+               turn 0-60;
+               call koch(s/3, n-1);
+            end
+         }
+      end
+   }
+   def flocon(s, n) {
+      start
+         call koch(s, n);
+         turn 120;
+         call koch(s, n);
+         turn 120;
+         call koch(s, n);
+      end
+   }
+   turn 180;
+   forward 375;
+   turn 90;
+   forward 200;
+   turn 90;
+   down;
+   call flocon(750, 4);
+end

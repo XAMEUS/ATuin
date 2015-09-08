@@ -1,0 +1,27 @@
+start
+   def tree(s, n) {
+      start
+      if (n <= 0) {
+         start
+            forward s;
+            forward 0-s;
+         end
+      }
+      else {
+         start
+            forward (7/10) * s;
+            turn 0-30;
+            call tree(2*s/3, n-1);
+            turn 60;
+            call tree(2*s/3, n-1);
+            turn 0-30;
+            forward (0-7/10) * s;
+         end
+      }
+      end
+   }
+   turn 90;
+   forward 0-400;
+   down;
+   call tree(400, 11);
+end

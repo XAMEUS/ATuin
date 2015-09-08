@@ -232,7 +232,7 @@ public class GMenuFX extends MenuBar {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			        try {
-			            desktop.browse(new URI("https://dl.dropboxusercontent.com/u/53110380/atuin/website/welcome.html"));
+			            desktop.browse(new URI("http://xameus.github.io/LogoTurtle/welcome.html"));
 			        } catch (Exception e) {
 			            e.printStackTrace();
 			        }
@@ -246,7 +246,7 @@ public class GMenuFX extends MenuBar {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			        try {
-			            desktop.browse(new URI("https://dl.dropboxusercontent.com/u/53110380/atuin/website/features.html"));
+			            desktop.browse(new URI("http://xameus.github.io/LogoTurtle/features.html"));
 			        } catch (Exception e) {
 			            e.printStackTrace();
 			        }
